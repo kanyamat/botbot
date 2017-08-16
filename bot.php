@@ -1,5 +1,5 @@
 <?php
-$access_token = 'XXXXXXXXXXXXXXXXXXXXXXX';
+$access_token = 'Ub840b452d253f3db490dd59507ab78d1';
 
 // Get POST body content
 $content = file_get_contents('php://input');
