@@ -21,11 +21,11 @@ if (!is_null($events['events'])) {
 				
 				'type' => 'text',
 				'text' => "hello"
-			{
-				"type": "sticker",
- 				"packageId": "1",
- 				"stickerId": "1"
-			}
+// 			{
+// 				"type": "sticker",
+//  				"packageId": "1",
+//  				"stickerId": "1"
+// 			}
 					  
 			];
 
