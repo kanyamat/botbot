@@ -22,9 +22,12 @@ if (!is_null($events['events'])) {
    // Build message to reply back
    $messages = [
     'type'=> 'sticker',
-    'packageId'=> '2',
-    'stickerId'=> '175'
+    'sticker' => $sticker
+//     'packageId'=> '2',
+//     'stickerId'=> '175'
    ];
+   
+ 
   
 //   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
 //     $replyToken = $event['replyToken'];
