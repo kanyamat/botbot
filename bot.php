@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
 //      'text' => "Hi!"
 //      ];
   
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดีครับ"){
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดีครับ,สวัสดีค่ะ"){
     $replyToken = $event['replyToken'];
 //     $text = "hello world!";
     
