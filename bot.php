@@ -37,6 +37,17 @@ if (!is_null($events['events'])) {
 //      'type' => 'text',
 //      'text' => "Hi!"
 //      ];
+  
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
+    $replyToken = $event['replyToken'];
+//     $text = "hello world!";
+    
+   $messages = [
+     'type' => 'text',
+     'text' => "สวัสดีจ้า"
+     ]; 
+
+  
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
     $replyToken = $event['replyToken'];
 //     $text = "hello world!";
@@ -46,12 +57,7 @@ if (!is_null($events['events'])) {
      'text' => "เราชื่อ botbot นะ"
      ]; 
 
-// // }else{
-// //   $arrPostData = array();
-// //   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
-// //   $arrPostData['messages'][0]['type'] = "text";
-// //   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-// }
+
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
