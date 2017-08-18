@@ -27,7 +27,7 @@ if (!is_null($events['events'])) {
     $replyToken = $event['replyToken'];    
    $messages = [
      'type' => 'text',
-     'text' => "สวัสดีจ้า" || 'text' => "สวัสดีค่ะ"
+     'text' => "สวัสดีจ้า"
      ]; 
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
