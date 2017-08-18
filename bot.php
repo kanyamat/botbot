@@ -22,7 +22,6 @@ if (!is_null($events['events'])) {
    // Build message to reply back
    $messages = [
     'type'=> 'sticker',
-//   'sticker' => $sticker
     'packageId'=> '2',
     'stickerId'=> '24'
    ];
@@ -37,7 +36,7 @@ if (!is_null($events['events'])) {
 //      'text' => "Hi!"
 //      ];
   
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดีครับ","สวัสดีค่ะ"){
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดีครับ"){
     $replyToken = $event['replyToken'];
 //     $text = "hello world!";
     
