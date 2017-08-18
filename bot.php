@@ -53,25 +53,17 @@ if (!is_null($events['events'])) {
 // //   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
 // }
   }else{
-  
-   $arrPostData = array();
    $replyToken = $event['replyToken'];
-   $arrPostData['replyToken'] = $event['replyToken'];
-//     $messages = [
-//      'type' => 'text',
-//      'text' => "พิมพ์ใหม่อีกทีนะ"
-//      ]; 
-   $arrPostData['messages'][0]['type'] = "text";
-   $arrPostData['messages'][0]['text'] = "พิมพ์ใหม่อีกทีนะ";
+   $text = "พิมพ์ใหม่อีกทีนะ";
+    $messages = [
+     'type' => 'text',
+     'text' => '$text'
+     ]; 
   } 
 }
 }
+
  
-
-
-  
-
-
 
 // echo "OK"; 
  // Make a POST Request to Messaging API to reply to sender
