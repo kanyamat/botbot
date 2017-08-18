@@ -28,7 +28,15 @@ if (!is_null($events['events'])) {
   
   }
  }
+}else if($event['type'] == 'message' && $event['message']['type'] == 'text'){
+    $replyToken = $event['replyToken'];
+    $text = "hello world!";
+    
+    $messages = [
+     'type' => 'text',
+     'test' => "Hi!"
 }
+ 
 // else{
 //   ($event['type'] == 'message' && $event['message']['type'] == 'text')
 //      $text = "hello world!";
