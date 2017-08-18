@@ -15,7 +15,7 @@ if (!is_null($events['events'])) {
 //       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
    // Get text sent
 //    $text = $event['template'];
-    $text = "hello world!";
+//     $text = "hello world!";
    
    // Get replyToken
    $replyToken = $event['replyToken'];
