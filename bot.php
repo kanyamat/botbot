@@ -29,19 +29,14 @@ if (!is_null($events['events'])) {
   }
  }
 }else{
-  $event['type'] == 'message' && $event['message']['type'] == 'text')
-    $replyToken = $event['replyToken'];
-    "message": {
-        "id": "325708",
-        "type": "text",
-        "text": "Hello, world"
+  $arrPostData = array();
+  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
+
 }
 
-//   $arrPostData = array();
-//   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-//   $arrPostData['messages'][0]['type'] = "text";
-//   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-
+  
 
 
 
@@ -64,13 +59,13 @@ if (!is_null($events['events'])) {
    curl_close($ch);
    echo $result . "\r\n";
       
-   $ch = curl_init();
-   curl_setopt($ch, CURLOPT_URL,$strUrl);
-   curl_setopt($ch, CURLOPT_HEADER, false);
-   curl_setopt($ch, CURLOPT_POST, true);
-   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-   curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-   $result = curl_exec($ch);
-   curl_close ($ch);
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL,$strUrl);
+//    curl_setopt($ch, CURLOPT_HEADER, false);
+//    curl_setopt($ch, CURLOPT_POST, true);
+//    curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
+//    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//    $result = curl_exec($ch);
+//    curl_close ($ch);
