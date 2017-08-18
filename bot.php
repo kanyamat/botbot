@@ -31,7 +31,10 @@ if (!is_null($events['events'])) {
 }else{
   $event['type'] == 'message' && $event['message']['type'] == 'text')
     $replyToken = $event['replyToken'];
-   $text = "hello world!";
+    "message": {
+        "id": "325708",
+        "type": "text",
+        "text": "Hello, world"
 }
 
 //   $arrPostData = array();
