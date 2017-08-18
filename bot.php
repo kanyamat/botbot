@@ -51,14 +51,15 @@ if (!is_null($events['events'])) {
 // //   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
 // //   $arrPostData['messages'][0]['type'] = "text";
 // //   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-// }else{
-//   $event['type'] == 'message' && $event['message']['type'] == 'text'){
-//     $messages = [
-//      'type' => 'text',
-//      'text' => "พิมพ์ใหม่อีกทีนะ"
-//      ]; 
 // }
-  }  
+  }else{
+  $event['type'] == 'message' && $event['message']['type'] == 'text'){
+   $replyToken = $event['replyToken'];
+    $messages = [
+     'type' => 'text',
+     'text' => "พิมพ์ใหม่อีกทีนะ"
+     ]; 
+  } 
 }
 }
  
