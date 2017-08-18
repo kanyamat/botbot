@@ -59,43 +59,6 @@ if (!is_null($events['events'])) {
      'type' => 'text',
      'text' => "เราชื่อ botbot นะ"
      ]; 
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "ok"){
-    $replyToken = $event['replyToken'];
-//     $text = "hello world!";
-    
-//    $messages = [
-//      'type' => 'text',
-//      'text' => "เราชื่อ botbot นะ"
-//      ]; 
-
-    $messages = [
-      "type": "template",
-  "altText": "this is a confirm template",
-  "template": {
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-  }
-    
-    ]
-   
-
-
-   
-   
-   
-   
    
   }else{
    $replyToken = $event['replyToken'];
