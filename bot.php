@@ -27,10 +27,6 @@ if (!is_null($events['events'])) {
     'stickerId'=> '24'
    ];
    
-       $messages = [
-        'type' => 'text',
-        'text' => $text
-      ];
   
 //   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
 //     $replyToken = $event['replyToken'];
@@ -41,7 +37,7 @@ if (!is_null($events['events'])) {
 //      'text' => "Hi!"
 //      ];
   
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดีครับ","สวัสดีค่ะ"){
     $replyToken = $event['replyToken'];
 //     $text = "hello world!";
     
