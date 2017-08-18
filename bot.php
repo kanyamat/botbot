@@ -13,9 +13,6 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if ($event['type'] == 'message' && $event['message']['type'] == 'sticker'){
 //       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
-   // Get text sent
-//    $text = $event['template'];
-//     $text = "hello world!";
    
    // Get replyToken
    $replyToken = $event['replyToken'];
@@ -25,30 +22,16 @@ if (!is_null($events['events'])) {
     'packageId'=> '2',
     'stickerId'=> '24'
    ];
-   
-  
-//   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
-//     $replyToken = $event['replyToken'];
-// //     $text = "hello world!";
-    
-//    $messages = [
-//      'type' => 'text',
-//      'text' => "Hi!"
-//      ];
   
   }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
-    $replyToken = $event['replyToken'];
-//     $text = "hello world!";
-    
+    $replyToken = $event['replyToken'];    
    $messages = [
      'type' => 'text',
      'text' => "สวัสดีจ้า"
      ]; 
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
-    $replyToken = $event['replyToken'];
-//     $text = "hello world!";
-    
+    $replyToken = $event['replyToken'];   
    $messages = [
      'type' => 'text',
      'text' => "เราชื่อ botbot นะ"
