@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
      'type' => 'text',
      'text' => "เราชื่อ botbot นะ"
      ]; 
-  }else if ($event['type'] == 'message' && $event['message']['type'] == "template"){
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "conf" && $event['message']['template']){
 $messages = [
   "type": "template",
   "altText": "this is a confirm template",
