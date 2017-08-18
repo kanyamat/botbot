@@ -55,13 +55,26 @@ if (!is_null($events['events'])) {
      'text' => "เราชื่อ botbot นะ"
      ]; 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "conf"){
-   $actions = array (
-  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
-  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
-);
-  $button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", $actions);
-  $outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("confim message", $button);
-  $response = $bot->replyMessage($event->getReplyToken(), $outputText);
+{
+  "type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
+}
     
   }else{
    $replyToken = $event['replyToken'];
