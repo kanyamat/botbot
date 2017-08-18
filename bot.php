@@ -42,18 +42,19 @@ if (!is_null($events['events'])) {
      'type' => 'text',
      'text' => "เราชื่อ botbot นะ"
      ]; 
-// }else if($events['events'][0]['message']['text'] == "ชื่ออะไร"){
-//   $arrPostData = array();
-//   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
-//   $arrPostData['messages'][0]['type'] = "text";
-//   $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";   
-   
+
 // }else{
 //   $arrPostData = array();
 //   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
 //   $arrPostData['messages'][0]['type'] = "text";
 //   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-}
+}else{
+  $event['type'] == 'message' && $event['message']['type'] == 'text'){
+    $messages = [
+     'type' => 'text',
+     'text' => "พิมพ์ใหม่อีกทีนะ"
+     ]; 
+  }
   
 }
 }
