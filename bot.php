@@ -28,13 +28,14 @@ if (!is_null($events['events'])) {
   
   }
  }
-}else{
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-
 }
+// else{
+//   $arrPostData = array();
+//   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+//   $arrPostData['messages'][0]['type'] = "text";
+//   $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
+
+// }
 
   
 
