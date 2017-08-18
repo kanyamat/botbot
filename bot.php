@@ -22,12 +22,15 @@ if (!is_null($events['events'])) {
    // Build message to reply back
    $messages = [
     'type'=> 'sticker',
-//     'sticker' => $sticker
+//   'sticker' => $sticker
     'packageId'=> '2',
     'stickerId'=> '24'
    ];
    
- 
+       $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
   
 //   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
 //     $replyToken = $event['replyToken'];
@@ -56,8 +59,40 @@ if (!is_null($events['events'])) {
      'type' => 'text',
      'text' => "เราชื่อ botbot นะ"
      ]; 
+  }else if ($event['type'] == 'message' && $event['message']['text'] == "ok"){
+    $replyToken = $event['replyToken'];
+//     $text = "hello world!";
+    
+//    $messages = [
+//      'type' => 'text',
+//      'text' => "เราชื่อ botbot นะ"
+//      ]; 
 
-
+   {
+  "type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
+}
+   
+   
+   
+   
+   
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
