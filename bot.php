@@ -26,16 +26,16 @@ if (!is_null($events['events'])) {
     'stickerId'=> '175'
    ];
   
-  }
- }
-}else if($event['type'] == 'message' && $event['message']['type'] == 'text'){
+  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     $replyToken = $event['replyToken'];
 //     $text = "hello world!";
     
-    $messages = [
+   $messages = [
      'type' => 'text',
      'text' => "Hi!"
      ];
+}
+ }
 }
  
 // else{
