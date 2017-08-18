@@ -22,9 +22,9 @@ if (!is_null($events['events'])) {
    // Build message to reply back
    $messages = [
     'type'=> 'sticker',
-    'sticker' => $sticker
-//     'packageId'=> '2',
-//     'stickerId'=> '175'
+//     'sticker' => $sticker
+    'packageId'=> '2',
+    'stickerId'=> '24'
    ];
    
  
