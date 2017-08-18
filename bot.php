@@ -57,13 +57,12 @@ if (!is_null($events['events'])) {
    $text = "พิมพ์ใหม่อีกทีนะ";
     $messages = [
      'type' => 'text',
-     'text' => '$text'
+     'text' => $text
      ]; 
   } 
 }
 }
 
- 
 
 // echo "OK"; 
  // Make a POST Request to Messaging API to reply to sender
