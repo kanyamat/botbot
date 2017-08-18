@@ -68,8 +68,8 @@ if (!is_null($events['events'])) {
 //      'text' => "เราชื่อ botbot นะ"
 //      ]; 
 
-   {
-  "type": "template",
+    $messages = [
+      "type": "template",
   "altText": "this is a confirm template",
   "template": {
       "type": "confirm",
@@ -87,7 +87,11 @@ if (!is_null($events['events'])) {
           }
       ]
   }
-}
+    
+    ]
+   
+
+
    
    
    
