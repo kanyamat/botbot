@@ -11,7 +11,8 @@ if (!is_null($events['events'])) {
  // Loop through each event
  foreach ($events['events'] as $event) {
   // Reply only when message sent is in 'text' format
-  if ($event['type'] == 'message' && $event['message']['type'] == 'sticker' || $event['type'] == 'message' && $event['message']['type'] == 'text') {
+  if ($event['type'] == 'message' && $event['message']['type'] == 'sticker' 
+//       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
    // Get text sent
 //    $text = $event['template'];
    $text = "hello world!";
@@ -27,7 +28,16 @@ if (!is_null($events['events'])) {
   
   }
  }
+}else{
+  $arrPostData = array();
+  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
 }
+
+
+
+
 // echo "OK"; 
  // Make a POST Request to Messaging API to reply to sender
    $url = 'https://api.line.me/v2/bot/message/reply';
