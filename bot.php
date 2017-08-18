@@ -29,11 +29,11 @@ if (!is_null($events['events'])) {
   }
  }
 }
-else{
-  ($event['type'] == 'message' && $event['message']['type'] == 'text')
-     $text = "hello world!";
+// else{
+//   ($event['type'] == 'message' && $event['message']['type'] == 'text')
+//      $text = "hello world!";
 
-}
+// }
 
   
 
