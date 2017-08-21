@@ -6,6 +6,7 @@ $content = file_get_contents('php://input');
 $data = json_decode($json,true);
 // Parse JSON
 $events = json_decode($content, true);
+$_msg = $events['events'][0]['message']['text'];
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
  // Loop through each event
@@ -34,12 +35,13 @@ if (!is_null($events['events'])) {
 //     'stickerId'=> '24'
 //    ];
   
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
-    $replyToken = $event['replyToken'];    
-   $messages = [
-     'type' => 'text',
-     'text' => "สวัสดีจ้า"
-     ]; 
+  }else if (strpos($_msg, 'สวัสดี') !== false) {
+      $replyToken = $event['replyToken'];
+      $text = "สวัสดีจ้า";
+      $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];  
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
     $replyToken = $event['replyToken'];   
@@ -82,7 +84,7 @@ if (!is_null($events['events'])) {
   
   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "con"){
    $replyToken = $event['replyToken']; 
-   $event = strtolower('text');
+//    $event = strtolower('text');
     
     $messages = [ 
   'type'=> 'template',
