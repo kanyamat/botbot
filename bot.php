@@ -82,7 +82,7 @@ if (!is_null($events['events'])) {
   
   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "con"){
     $replyToken = $event['replyToken']; 
-    $change = strtolower($event);
+    $text = strtolower($event);
     $messages = [ 
   'type'=> 'template',
   'altText'=> 'this is a confirm template',
