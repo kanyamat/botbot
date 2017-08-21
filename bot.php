@@ -37,61 +37,61 @@ if (!is_null($events['events'])) {
      'text' => "เราชื่อ botbot นะ"
      ];
    
-//   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt"){
-//     $replyToken = $event['replyToken']; 
-//     $messages = [
+  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt"){
+    $replyToken = $event['replyToken']; 
+    $messages = [
    
-//   'type': 'template',
-//   'altText': 'this is a buttons template',
-//   'template': [
-//       'type': 'buttons',
-//       'thumbnailImageUrl': 'https://example.com/bot/images/image.jpg',
-//       'title': 'Menu',
-//       'text': 'Please select',
-//       'actions': [
-//           [
-//             'type': 'postback',
-//             'label': 'Buy',
-//             'data': 'action=buy&itemid=123'
-//           ],
-//           [
-//             'type': 'postback',
-//             'label': 'Add to cart',
-//             'data': 'action=add&itemid=123'
-//           ],
-//           [
-//             'type': 'uri',
-//             'label': 'View detail',
-//             'uri': 'http://example.com/page/123'
-//           ]
-//       ]
-//   ]
+  'type'=> 'template',
+  'altText'=> 'this is a buttons template',
+  'template'=> [
+      'type'=> 'buttons',
+      'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+      'title'=> 'Menu',
+      'text'=> 'Please select',
+      'actions'=> [
+          [
+            'type'=> 'postback',
+            'label'=> 'Buy',
+            'data'=> 'action=buy&itemid=123'
+          ],
+          [
+            'type'=> 'postback',
+            'label'=> 'Add to cart',
+            'data'=> 'action=add&itemid=123'
+          ],
+          [
+            'type'=> 'uri',
+            'label'=> 'View detail',
+            'uri'=> 'http://example.com/page/123'
+          ]
+      ]
+  ]
 
-// ];  
+];  
    
-}elseif($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ปุ่ม") {
-     $replyToken = $event['replyToken'];
-        $messages = [
-        'type' => 'template',
-        'altText' => 'ボタン',
-        'template' => [
-            'type' => 'buttons',
-            'title' => 'タイトルです',
-            'text' => '選択してね',
-            'actions' => [
-                [
-                    'type' => 'postback',
-                    'label' => 'webhookにpost送信',
-                    'data' => 'value'
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'googleへ移動',
-                    'uri' => 'https://google.com'
-                ]
-            ]
-        ]
-    ];   
+// }elseif($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt") {
+//      $replyToken = $event['replyToken'];
+//         $messages = [
+//         'type' => 'template',
+//         'altText' => 'ボタン',
+//         'template' => [
+//             'type' => 'buttons',
+//             'title' => 'タイトルです',
+//             'text' => '選択してね',
+//             'actions' => [
+//                 [
+//                     'type' => 'postback',
+//                     'label' => 'webhookにpost送信',
+//                     'data' => 'value'
+//                 ],
+//                 [
+//                     'type' => 'uri',
+//                     'label' => 'googleへ移動',
+//                     'uri' => 'https://google.com'
+//                 ]
+//             ]
+//         ]
+//     ];   
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
