@@ -81,8 +81,8 @@ if (!is_null($events['events'])) {
 ];  
   
   }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "con"){
-   $event = strtolower('text'); 
    $replyToken = $event['replyToken']; 
+   $event = strtolower('text');
     
     $messages = [ 
   'type'=> 'template',
