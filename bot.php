@@ -37,7 +37,7 @@ if (!is_null($events['events'])) {
      'text' => "เราชื่อ botbot นะ"
      ];
    
-  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt") ){
+  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt"){
     $replyToken = $event['replyToken']; 
     $messages = [
    
