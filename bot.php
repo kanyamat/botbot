@@ -25,9 +25,6 @@ if (!is_null($events['events'])) {
     'stickerId'=> $stick2
    ];
    
-   
-   
-   
 //    // Get replyToken
 //    $replyToken = $event['replyToken'];
 //    // Build message to reply back
@@ -59,7 +56,7 @@ if (!is_null($events['events'])) {
   'altText'=> 'this is a buttons template',
   'template'=> [
       'type'=> 'buttons',
-      'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+      'thumbnailImageUrl'=> 'https://github.com/kanyamat/botbot/blob/master/20623865_1460720087344059_157788054_n.jpg',
       'title'=> 'Menu',
       'text'=> 'Please select',
       'actions'=> [
