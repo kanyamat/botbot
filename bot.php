@@ -14,14 +14,28 @@ if (!is_null($events['events'])) {
   if ($event['type'] == 'message' && $event['message']['type'] == 'sticker'){
 //       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
    
+   $stick1 = $events['events'][0]['message']['packageId'];
+   $stick2 = $events['events'][0]['message']['stickerId'];
    // Get replyToken
    $replyToken = $event['replyToken'];
    // Build message to reply back
    $messages = [
     'type'=> 'sticker',
-    'packageId'=> '2',
-    'stickerId'=> '24'
+    'packageId'=> $stick1,
+    'stickerId'=> $stick2
    ];
+   
+   
+   
+   
+//    // Get replyToken
+//    $replyToken = $event['replyToken'];
+//    // Build message to reply back
+//    $messages = [
+//     'type'=> 'sticker',
+//     'packageId'=> '2',
+//     'stickerId'=> '24'
+//    ];
   
   }else if ($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
     $replyToken = $event['replyToken'];    
@@ -69,29 +83,7 @@ if (!is_null($events['events'])) {
 
 ];  
    
-// }elseif($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "butt") {
-//      $replyToken = $event['replyToken'];
-//         $messages = [
-//         'type' => 'template',
-//         'altText' => 'ボタン',
-//         'template' => [
-//             'type' => 'buttons',
-//             'title' => 'タイトルです',
-//             'text' => '選択してね',
-//             'actions' => [
-//                 [
-//                     'type' => 'postback',
-//                     'label' => 'webhookにpost送信',
-//                     'data' => 'value'
-//                 ],
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'googleへ移動',
-//                     'uri' => 'https://google.com'
-//                 ]
-//             ]
-//         ]
-//     ];   
+  
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
