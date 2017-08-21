@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
    
   'type'=> 'template',
   'altText'=> 'this is a carousel template',
-  'template'=> {
+  'template'=> [
       'type'=> 'carousel',
       'columns'=> [
           [
