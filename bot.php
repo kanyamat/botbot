@@ -56,7 +56,7 @@ if (!is_null($events['events'])) {
   'altText'=> 'this is a buttons template',
   'template'=> [
       'type'=> 'buttons',
-      'thumbnailImageUrl'=> 'https://github.com/kanyamat/botbot/blob/master/20623865_1460720087344059_157788054_n.jpg',
+      'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/image.jpg',
       'title'=> 'Menu',
       'text'=> 'Please select',
       'actions'=> [
