@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
   'altText'=> 'this is a buttons template',
   'template'=> [
       'type'=> 'buttons',
-      'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/image.jpg',
+      'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/image.jpg',
       'title'=> 'Menu',
       'text'=> 'Please select',
       'actions'=> [
@@ -117,7 +117,7 @@ if (!is_null($events['events'])) {
       'type'=> 'carousel',
       'columns'=> [
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/luffy.jpg',
+            'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/luffy.jpg',
             'title'=> 'this is menu',
             'text'=> 'description',
             'actions'=> [
@@ -139,7 +139,7 @@ if (!is_null($events['events'])) {
             ]
           ],
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/chin.png',
+            'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/chin.png',
             'title'=> 'this is menu',
             'text'=> 'description',
             'actions'=> [
