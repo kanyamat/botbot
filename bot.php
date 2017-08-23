@@ -167,26 +167,15 @@ if (!is_null($events['events'])) {
    
    
    }else if (strpos($_msg, 'หา') !== false) {
+   
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("หา","", $_msg);
-    $url = 'http://search.pantip.com/ss?ac=0&q='.$x_tra;
-    include("simple_html_dom.php");
-    $html = file_get_html($url);
-    $i = 0;
-    foreach($html->find('li[class=g]') as $element) {
-        foreach($element->find('h3[class=r]') as $h3) 
-        {
-            $title[$i] = '<h1>'.$h3->plaintext.'</h1>' ;
-        }
-           $i++;
-    }
-    print_r($title);
-   
+    $url = 'http://search.google.com/ss?ac=0&q='.$x_tra;
     $messages = [
           'type' => 'text',
-          'text' => $title
+          'text' =>  $url 
         ];
-   
+  
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
