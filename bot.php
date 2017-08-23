@@ -172,7 +172,7 @@ if (!is_null($events['events'])) {
     $x_tra = str_replace("หา","", $_msg);
 //     $url = 'http://search.pantip.com/ss?ac=0&q='.$x_tra;
 //     $url = 'https://ajax.googleapis.com/ajax/services/search'.$x_tra;
-       $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
+       $url = 'https://search.google.co.th/search?source=hp&q='.$x_tra;
     $messages = [
           'type' => 'text',
           'text' =>  $url 
