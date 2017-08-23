@@ -170,7 +170,7 @@ if (!is_null($events['events'])) {
    
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("หา","", $_msg);
-    $url = 'http://search.google.com/ss?ac=0&q='.$x_tra;
+    $url = 'http://search.pantip.com/ss?ac=0&q='.$x_tra;
     $messages = [
           'type' => 'text',
           'text' =>  $url 
