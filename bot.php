@@ -170,10 +170,10 @@ if (!is_null($events['events'])) {
    
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("หา","", $_msg);
-   $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
+//    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
 //     $url = 'http://www.pantip.com/ss?ac=0&q='.$x_tra;
 //     $url = 'https://ajax.googleapis.com/ajax/services/search'.$x_tra;
-//        $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
+        $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
     $messages = [
           'type' => 'text',
           'text' =>  $url 
