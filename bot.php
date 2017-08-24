@@ -178,6 +178,19 @@ if (!is_null($events['events'])) {
           'type' => 'text',
           'text' =>  $url 
         ];
+   
+         (function() {
+             var cx = '014388729015054466439:e_gyj6qnxr8';
+             var gcse = document.createElement('script');
+             gcse.type = 'text/javascript';
+             gcse.async = true;
+             gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(gcse, s);
+           })();
+   
+   
+   
   
   }else{
    $replyToken = $event['replyToken'];
