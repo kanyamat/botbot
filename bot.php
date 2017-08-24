@@ -213,7 +213,7 @@ if (!is_null($events['events'])) {
    echo $result . "\r\n";
 
 <script>
-	(function(strpos) {
+	(function() {
 		var cx = '014388729015054466439:e_gyj6qnxr8';
 		var gcse = document.createElement('script');
 		gcse.type = 'text/javascript';
