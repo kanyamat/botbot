@@ -189,6 +189,20 @@ if (!is_null($events['events'])) {
 }
 }
 
+			<script>
+			  (function(strpos) {
+			    var cx = '014388729015054466439:e_gyj6qnxr8';
+			    var gcse = document.createElement('script');
+			    gcse.type = 'text/javascript';
+			    gcse.async = true;
+			    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+			    var s = document.getElementsByTagName('script')[0];
+			    s.parentNode.insertBefore(gcse, s);
+			  })();
+			</script>
+			<gcse:search></gcse:search>
+
+
 
 // echo "OK"; 
  // Make a POST Request to Messaging API to reply to sender
