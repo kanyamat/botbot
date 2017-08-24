@@ -178,17 +178,17 @@ if (!is_null($events['events'])) {
           'text' =>  $url 
         ];
    	  // <script>
-	(function() {
-		var cx = '014388729015054466439:e_gyj6qnxr8';
-		var gcse = document.createElement('text');
-		gcse.type = 'text/javascript';
-		gcse.async = true;
-		gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-		var s = document.getElementsByTagName('text')[0];
-		s.parentNode.insertBefore(gcse, s);
-	})();
-// </script>
-<gcse:search></gcse:search>
+// 	(function() {
+// 		var cx = '014388729015054466439:e_gyj6qnxr8';
+// 		var gcse = document.createElement('text');
+// 		gcse.type = 'text/javascript';
+// 		gcse.async = true;
+// 		gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+// 		var s = document.getElementsByTagName('text')[0];
+// 		s.parentNode.insertBefore(gcse, s);
+// 	})();
+// // </script>
+// <gcse:search></gcse:search>
 
   }else{
    $replyToken = $event['replyToken'];
