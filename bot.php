@@ -172,25 +172,12 @@ if (!is_null($events['events'])) {
     $x_tra = str_replace("หา","", $_msg);
 //    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
       $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
-   (function($url) {
-			    var cx = '014388729015054466439:e_gyj6qnxr8';
-			    var gcse = document.createElement('script');
-			    gcse.type = 'text/javascript';
-			    gcse.async = true;
-			    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-			    var s = document.getElementsByTagName('script')[0];
-			    s.parentNode.insertBefore(gcse, s);
-			  })($url);
     $messages = [
           'type' => 'text',
           'text' =>  $url 
         ];
    
 
-   
-   
-   
-  
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
