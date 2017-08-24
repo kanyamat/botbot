@@ -172,10 +172,11 @@ if (!is_null($events['events'])) {
     $x_tra = str_replace("หา","", $_msg);
 //    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
       $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
-
+	$obj = json_decode(file_get_contents($url), true);
+	echo $obj['access_token'];
     $messages = [
           'type' => 'text',
-          'text' =>  $url 
+          'text' =>  $obj 
         ];
    	  // <script>
 // 	(function() {
