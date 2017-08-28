@@ -196,6 +196,11 @@ if (!is_null($events['events'])) {
                     'type' => 'uri',
                     'label' => 'ไปยังลิงค์',
                     'uri' => $link
+                ],
+		                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link
                 ]
             ]
         ]
