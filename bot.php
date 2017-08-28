@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
   'altText'=> 'this is a buttons template',
   'template'=> [
       'type'=> 'buttons',
-      'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/image.jpg',
+      'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/image.jpg',
       'title'=> 'Menu',
       'text'=> 'Please select',
       'actions'=> [
@@ -117,7 +117,7 @@ if (!is_null($events['events'])) {
       'type'=> 'carousel',
       'columns'=> [
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/luffy.jpg',
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title'=> 'this is menu',
             'text'=> 'description',
             'actions'=> [
@@ -139,7 +139,7 @@ if (!is_null($events['events'])) {
             ]
           ],
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/chin.png',
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
             'title'=> 'this is menu',
             'text'=> 'description',
             'actions'=> [
@@ -163,8 +163,39 @@ if (!is_null($events['events'])) {
       ]
   
 ]
-];   
+]; 
    
+   
+   }else if (strpos($_msg, 'หา') !== false) {
+   
+    $replyToken = $event['replyToken'];
+    $x_tra = str_replace("หา","", $_msg);
+//    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
+      $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
+	
+    $messages = [
+          'type' => 'text',
+          'text' =>  $url 
+        ];
+	$obj = json_decode(file_get_contents($url), true);
+	echo $obj['access_token'];
+	      $messages = [
+          'type' => 'text',
+          'text' =>  $obj 
+        ];
+   	  // <script>
+// 	(function() {
+// 		var cx = '014388729015054466439:e_gyj6qnxr8';
+// 		var gcse = document.createElement('text');
+// 		gcse.type = 'text/javascript';
+// 		gcse.async = true;
+// 		gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+// 		var s = document.getElementsByTagName('text')[0];
+// 		s.parentNode.insertBefore(gcse, s);
+// 	})();
+// // </script>
+// <gcse:search></gcse:search>
+
   }else{
    $replyToken = $event['replyToken'];
    $text = "พิมพ์ใหม่อีกทีนะ";
@@ -175,6 +206,9 @@ if (!is_null($events['events'])) {
   } 
 }
 }
+
+		
+
 
 
 // echo "OK"; 
@@ -195,4 +229,6 @@ if (!is_null($events['events'])) {
    $result = curl_exec($ch);
    curl_close($ch);
    echo $result . "\r\n";
+
+
       
