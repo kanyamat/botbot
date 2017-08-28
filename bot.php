@@ -174,6 +174,7 @@ if (!is_null($events['events'])) {
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
     $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
    // $re = $events['kind'];
    //          $messages = [
    //            'type' => 'text',
@@ -200,7 +201,7 @@ if (!is_null($events['events'])) {
 		                [
                     'type' => 'uri',
                     'label' => 'ไปยังลิงค์2',
-                    'uri' => $link
+                    'uri' => $link2
                 ]
             ]
         ]
