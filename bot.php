@@ -190,16 +190,14 @@ if (!is_null($events['events'])) {
 // 	$readfile = fread($myfile,filesize("ThToEn.php"));
 // 	fclose($myfile);
 	
-	require_once "GoogleTrans.php";
-	$word = $_REQUEST['word'];
-	$GT = NEW GoogleTranslate();
-	$response = $GT->translate('th','en',$word);  
-	//echo "<pre>";
-// 	echo $word."   =   ".$response;
+	$file = fopen("ThToEn.php","r");
+	$read = fgets($file);
+	fclose($file);
+
 	  
     $messages = [
           'type' => 'text',
-          'text' =>  $word 
+          'text' =>  $read 
         ];
 	  
 	  
