@@ -196,28 +196,28 @@ if (!is_null($events['events'])) {
 // // </script>
 // <gcse:search></gcse:search>
 
-  }else if (strpos($_msg, 'แปล') !== false) {
-	$replyToken = $event['replyToken']; 
+//   }else if (strpos($_msg, 'แปล') !== false) {
+// 	$replyToken = $event['replyToken']; 
 	
 
-    $x_tra = str_replace("แปล","", $_msg);
-//    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
-  //    $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
+//     $x_tra = str_replace("แปล","", $_msg);
+// //    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
+//   //    $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
     
-    	$myfile = fopen("ThToEn.php", "r") or die("Unable to open file!");
-	$readfile = fread($myfile,filesize("ThToEn.php"));
-	fclose($myfile);
+//     	$myfile = fopen("ThToEn.php", "r") or die("Unable to open file!");
+// 	$readfile = fread($myfile,filesize("ThToEn.php"));
+// 	fclose($myfile);
 	  
-    $messages = [
-          'type' => 'text',
-          'text' =>  $readfile 
-        ];
-	$obj = json_decode(file_get_contents($readfile), true);
-	echo $obj['access_token'];
-	      $messages = [
-          'type' => 'text',
-          'text' =>  $obj 
-        ];	
+//     $messages = [
+//           'type' => 'text',
+//           'text' =>  $readfile 
+//         ];
+// 	$obj = json_decode(file_get_contents($readfile), true);
+// 	echo $obj['access_token'];
+// 	      $messages = [
+//           'type' => 'text',
+//           'text' =>  $obj 
+//         ];	
 	  
 	
 
