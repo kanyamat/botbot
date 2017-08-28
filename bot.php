@@ -177,12 +177,12 @@ if (!is_null($events['events'])) {
           'type' => 'text',
           'text' =>  $url 
         ];
-	$obj = json_decode(file_get_contents($url), true);
-	echo $obj['access_token'];
-     $messages = [
-          'type' => 'text',
-          'text' =>  $obj 
-        ];
+// 	$obj = json_decode(file_get_contents($url), true);
+// 	echo $obj['access_token'];
+//      $messages = [
+//           'type' => 'text',
+//           'text' =>  $obj 
+//         ];
 	  
 	  
   }else{
