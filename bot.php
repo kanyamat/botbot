@@ -186,7 +186,7 @@ if (!is_null($events['events'])) {
         'template' => [
             'type' => 'buttons',
             'title' =>  $x_tra,
-//             'text' =>   $title,
+            'text' =>   $title,
             'actions' => [
                 [
                     'type' => 'postback',
