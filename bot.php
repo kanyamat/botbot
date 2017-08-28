@@ -207,7 +207,62 @@ if (!is_null($events['events'])) {
         ]
     ];
 
-	  
+   }else if (strpos($_msg, 'ค้นหา') !== false) {
+    $replyToken = $event['replyToken'];
+    $x_tra = str_replace("ค้นหา","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $title= $events['items'][0]['title'];
+    $link = $events['items'][0]['link']; 
+    $link2 = $events['items'][1]['link'];
+    $messages = [ 
+   
+  'type'=> 'template',
+  'altText'=> 'this is a carousel template',
+  'template'=> [
+      'type'=> 'carousel',
+      'columns'=> [
+          [
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'Buy',
+                    'data'=> 'action=buy&itemid=111'
+                ],
+                [
+                    'type'=> 'postback',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ]
+
+            ]
+          ],
+          [
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'Buy',
+                    'data'=> 'action=buy&itemid=222'
+                ],
+                [
+                    'type'=> 'postback',
+                     'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ]
+              
+            ]
+          ]
+      ]
+  
+]
+];   
 	  
   }else{
 	   $replyToken = $event['replyToken'];
