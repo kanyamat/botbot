@@ -210,6 +210,7 @@ if (!is_null($events['events'])) {
     $json= file_get_contents($url);
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
+    $title= $events['items'][1]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
     $messages = [ 
@@ -226,12 +227,12 @@ if (!is_null($events['events'])) {
             'actions'=> [
                 [
                     'type'=> 'postback',
-                    'label'=> 'Buy',
+                    'label'=> 'OK',
                     'data'=> 'action=buy&itemid=111'
                 ],
                 [
                     'type'=> 'uri',
-                    'label'=> 'View detail',
+                    'label'=> 'ไปยังลิงค์',
                     'uri'=> $link
                 ]
             ]
@@ -239,16 +240,16 @@ if (!is_null($events['events'])) {
           [
             'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
             'title' =>  $x_tra,
-            'text' =>   $title,
+            'text' =>   $title1,
             'actions'=> [
                 [
                     'type'=> 'postback',
-                    'label'=> 'Buy',
+                    'label'=> 'OK',
                     'data'=> 'action=buy&itemid=222'
                 ],
                 [
                     'type'=> 'uri',
-                    'label'=> 'View detail',
+                    'label'=> 'ไปยังลิงค์',
                     'uri'=> $link2
                 ]
             ]
