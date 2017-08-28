@@ -191,13 +191,13 @@ if (!is_null($events['events'])) {
 // 	fclose($myfile);
 	
 	$file = fopen("ThToEn.php","r");
-	$read = fgets($file);
+	$word = fgets($file);
 	fclose($file);
 
 	  
     $messages = [
           'type' => 'text',
-          'text' =>  $read 
+          'text' =>  $word 
         ];
 	  
 	  
