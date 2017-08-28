@@ -216,7 +216,7 @@ if (!is_null($events['events'])) {
     $title= $events['items'][0]['title'];
     $link = $events['items'][0]['link']; 
     $link2 = $events['items'][1]['link'];
-    $messages = [ 
+     $messages = [ 
    
   'type'=> 'template',
   'altText'=> 'this is a carousel template',
@@ -225,8 +225,8 @@ if (!is_null($events['events'])) {
       'columns'=> [
           [
             'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
-            'title' =>  $x_tra,
-            'text' =>   $title,
+            'title'=> 'this is menu',
+            'text'=> 'description',
             'actions'=> [
                 [
                     'type'=> 'postback',
@@ -235,16 +235,16 @@ if (!is_null($events['events'])) {
                 ],
                 [
                     'type'=> 'postback',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $link
+                    'label'=> 'Add to cart',
+                    'data'=> 'action=add&itemid=111'
                 ]
 
             ]
           ],
           [
             'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
-            'title' =>  $x_tra,
-            'text' =>   $title,
+            'title'=> 'this is menu',
+            'text'=> 'description',
             'actions'=> [
                 [
                     'type'=> 'postback',
@@ -253,16 +253,16 @@ if (!is_null($events['events'])) {
                 ],
                 [
                     'type'=> 'postback',
-                     'label' => 'ไปยังลิงค์',
-                    'uri' => $link
+                    'label'=> 'Add to cart',
+                    'data'=> 'action=add&itemid=222'
                 ]
-              
+
             ]
           ]
       ]
   
 ]
-];   
+]; 
 	  
   }else{
 	   $replyToken = $event['replyToken'];
