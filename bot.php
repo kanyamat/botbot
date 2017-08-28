@@ -186,13 +186,20 @@ if (!is_null($events['events'])) {
 //    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
   //    $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
     
-    	$myfile = fopen("ThToEn.php", "r") or die("Unable to open file!");
-	$readfile = fread($myfile,filesize("ThToEn.php"));
-	fclose($myfile);
+//     	$myfile = fopen("ThToEn.php", "r") or die("Unable to open file!");
+// 	$readfile = fread($myfile,filesize("ThToEn.php"));
+// 	fclose($myfile);
+	
+	require_once "GoogleTrans.php";
+	$word = $_REQUEST['word'];
+	$GT = NEW GoogleTranslate();
+	$response = $GT->translate('th','en',$word);  
+	//echo "<pre>";
+// 	echo $word."   =   ".$response;
 	  
     $messages = [
           'type' => 'text',
-          'text' =>  $readfile 
+          'text' =>  $word 
         ];
 	  
 	  
