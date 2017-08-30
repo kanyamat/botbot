@@ -166,49 +166,112 @@ if (!is_null($events['events'])) {
 ]; 
    
    
-   }else if (strpos($_msg, 'หา') !== false) {
-   
+  }else if (strpos($_msg, 'หา') !== false) {
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("หา","", $_msg);
-//    $url = 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$x_tra;
-      $url = 'https://www.google.co.th/search?source=hp&q='.$x_tra;
-	
-    $messages = [
-          'type' => 'text',
-          'text' =>  $url 
-        ];
-	$obj = json_decode(file_get_contents($url), true);
-	echo $obj['access_token'];
-	      $messages = [
-          'type' => 'text',
-          'text' =>  $obj 
-        ];
-   	  // <script>
-// 	(function() {
-// 		var cx = '014388729015054466439:e_gyj6qnxr8';
-// 		var gcse = document.createElement('text');
-// 		gcse.type = 'text/javascript';
-// 		gcse.async = true;
-// 		gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-// 		var s = document.getElementsByTagName('text')[0];
-// 		s.parentNode.insertBefore(gcse, s);
-// 	})();
-// // </script>
-// <gcse:search></gcse:search>
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyCdlIPgeHwexorxeKsVvjrW1fwh4SOjOjI&q='.$x_tra;
+    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAzNh-0u0rojtkaQvmBlCg44f7oGIvFWdw&q='.$x_tra;
+    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAACKRpkX5IcqTtZeQAY0i4MGM8Gx2_Xrk&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $title= $events['items'][0]['title'];
+    $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
 
+   $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions' => [
+                [
+                    'type' => 'postback',
+                    'label' => 'good',
+                    'data' => 'value'
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ],
+		                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link2
+                ]
+            ]
+        ]
+    ];
+
+   }else if (strpos($_msg, 'ต้องการ') !== false) {
+    $replyToken = $event['replyToken'];
+    $x_tra = str_replace("ต้องการ","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $title= $events['items'][0]['title'];
+    $title2= $events['items'][1]['title'];
+    $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
+    $messages = [ 
+   
+  'type'=> 'template',
+  'altText'=> 'this is a carousel template',
+  'template'=> [
+      'type'=> 'carousel',
+      'columns'=> [
+          [
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'OK',
+                    'data'=> 'action=buy&itemid=111'
+                ],
+                [
+                    'type'=> 'uri',
+                    'label'=> 'ไปยังลิงค์',
+                    'uri'=> $link
+                ]
+            ]
+          ],
+          [
+            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
+            'title' =>  $x_tra,
+            'text' =>   $title2,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'OK',
+                    'data'=> 'action=buy&itemid=222'
+                ],
+                [
+                    'type'=> 'uri',
+                    'label'=> 'ไปยังลิงค์',
+                    'uri'=> $link2
+                ]
+            ]
+          ]
+      ]
+  
+]
+]; 
+	  
   }else{
-   $replyToken = $event['replyToken'];
-   $text = "พิมพ์ใหม่อีกทีนะ";
-    $messages = [
-     'type' => 'text',
-     'text' => $text
-     ]; 
+	   $replyToken = $event['replyToken'];
+	   $text = "พิมพ์ใหม่อีกทีนะ";
+	    $messages = [
+	     'type' => 'text',
+	     'text' => $text
+	     ]; 
   } 
 }
 }
-
-		
-
 
 
 // echo "OK"; 
