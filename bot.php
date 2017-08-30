@@ -50,13 +50,26 @@ if (!is_null($events['events'])) {
        $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
        $json= file_get_contents($url);
        $events = json_decode($json, true);
-       $z = [];
- 	  $z = array(for ($x = 0; $x <= 4; $x++) {
-		    $title= $events['items'][$x]['title'];
-		    $link = $events['items'][$x]['link'];
-		} );
-          array_push($z);  
-	  
+//        $z = [];
+//  	  $z = array(for ($x = 0; $x <= 4; $x++) {
+// 		    $title= $events['items'][$x]['title'];
+// 		    $link = $events['items'][$x]['link'];
+// 		} );
+//           array_push($z);  
+	    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a carousel template',
+        'template' => [
+            'type' => 'carousel',
+            'columns' => [
+               [
+                    'title' => 'hello',
+                    'text' => 'description',
+                    //'actions' => [$z]
+               ]
+            ]
+        ]
+    ]; 
 // 	$i = 0; 
 
 // 	while($i <= 4) {
