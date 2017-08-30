@@ -216,6 +216,7 @@ if (!is_null($events['events'])) {
     $title2= $events['items'][1]['title'];
     $title3= $events['items'][2]['title'];
     $title4= $events['items'][3]['title'];
+    
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
@@ -281,7 +282,7 @@ if (!is_null($events['events'])) {
 	  [
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
             'title' =>  $x_tra,
-            'text' =>   $title3,
+            'text' =>   $title4,
             'actions'=> [
                 [
                     'type'=> 'postback',
@@ -291,7 +292,7 @@ if (!is_null($events['events'])) {
                 [
                     'type'=> 'uri',
                     'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link3
+                    'uri'=> $link4
                 ]
             ]
           ]
