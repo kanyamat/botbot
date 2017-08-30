@@ -41,7 +41,21 @@ if (!is_null($events['events'])) {
       $messages = [
         'type' => 'text',
         'text' => $text
-      ];  
+      ]; 
+
+  }else if (strpos($_msg, 'find') !==false){
+       $replyToken = $event['replyToken'];
+       $json= file_get_contents($url);
+	  $events = json_decode($json, true);
+		  for ($x = 0; $x <= 4; $x++) {
+		    $title= $events['items'][$x]['title'];
+		    $link = $events['items'][$x]['link'];
+		} 
+	   $messages = [
+	     'type' => 'text',
+	     'text' => $x
+	     ];
+	  
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
     $replyToken = $event['replyToken'];   
