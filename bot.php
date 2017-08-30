@@ -50,17 +50,17 @@ if (!is_null($events['events'])) {
        $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
        $json= file_get_contents($url);
        $events = json_decode($json, true);
-// 		  for ($x = 0; $x <= 4; $x++) {
-// 		    $title= $events['items'][$x]['title'];
-// 		    $link = $events['items'][$x]['link'];
-// 		} 
-	$i = 0; 
+		  for ($x = 0; $x <= 4; $x++) {
+		    $title= $events['items'][$x]['title'];
+		    $link = $events['items'][$x]['link'];
+		} 
+// 	$i = 0; 
 
-	while($i <= 4) {
-	    $title= $events['items'][$i]['title'];
-	    $link = $events['items'][$i]['link'];
-	    $i++;
-	} 
+// 	while($i <= 4) {
+// 	    $title= $events['items'][$i]['title'];
+// 	    $link = $events['items'][$i]['link'];
+// 	    $i++;
+// 	} 
 	   $messages = [
 	     'type' => 'text',
 	     'text' => $title
