@@ -52,10 +52,10 @@ if (!is_null($events['events'])) {
        $events = json_decode($json, true);
 
 // 	  $a = array();
-// 		  for ($x = 0; $x <= 4; $x++) {
-// 		    $title= $events['items'][$x]['title'];
-// 		    $link = $events['items'][$x]['link'];
-// 		} 
+		  for ($x = 0; $x <= 4; $x++) {
+		    $title= $events['items'][$x]['title'];
+		    $link = $events['items'][$x]['link'];
+		} 
 // 	$i = 0; 
 
 // 	while($i <= 4) {
@@ -65,9 +65,9 @@ if (!is_null($events['events'])) {
 // 	} 
 	   $messages = [
 
-	     'type' => 'text',
+	     //'type' => 'text',
 	     'title' => $x_tra,
-	     //'text' => $title,
+	     'text' => $title,
 	     'uri' => $link
 
 	     ];
