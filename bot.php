@@ -51,10 +51,11 @@ if (!is_null($events['events'])) {
        $json= file_get_contents($url);
        $events = json_decode($json, true);
         //$z = [];
-//  	  $z = array(for ($x = 0; $x <= 4; $x++) {
-// 		    $title= $events['items'][$x]['title'];
-// 		    $link = $events['items'][$x]['link'];
-// 		} );
+ 	  $z = array(
+		  for ($x = 0; $x <= 4; $x++) {
+		    $title= $events['items'][$x]['title'];
+		    $link = $events['items'][$x]['link'];
+		} );
 //           array_push($z);  
 	  
 	  	$myObj->$title = $events['items'][$x]['title'];
