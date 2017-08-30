@@ -53,7 +53,9 @@ if (!is_null($events['events'])) {
 		} 
 	   $messages = [
 	     'type' => 'text',
-	     'text' => $link
+	     'text' => $title,
+	     'uri' => $link
+
 	     ];
 	  
 
