@@ -224,7 +224,7 @@ if (!is_null($events['events'])) {
       'type'=> 'carousel',
       'columns'=> [
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
+            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
             'text' =>   $title,
             'actions'=> [
@@ -241,7 +241,7 @@ if (!is_null($events['events'])) {
             ]
           ],
           [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
+            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
             'title' =>  $x_tra,
             'text' =>   $title2,
             'actions'=> [
