@@ -65,8 +65,9 @@ if (!is_null($events['events'])) {
 // 	} 
 	   $messages = [
 
-	     'type' => 'uri',
+	     'type' => 'text',
 	     'title' => $x_tra,
+	     'type' => 'uri',
 	     'text' => $x,
 	     'uri' => $x
 
