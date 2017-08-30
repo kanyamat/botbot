@@ -53,10 +53,17 @@ if (!is_null($events['events'])) {
 	  
 	  
        $events = json_decode($json, true);
-		  for ($x = 0; $x <= 4; $x++) {
-		    $title= $events['items'][$x]['title'];
-		    $link = $events['items'][$x]['link'];
-		} 
+// 		  for ($x = 0; $x <= 4; $x++) {
+// 		    $title= $events['items'][$x]['title'];
+// 		    $link = $events['items'][$x]['link'];
+// 		} 
+	  $x = 0; 
+
+	while($x <= 4) {
+	    $title= $events['items'][$x]['title'];
+	    $link = $events['items'][$x]['link'];
+	    $x++;
+	} 
 	   $messages = [
 	     'type' => 'text',
 	     'text' => $title,
