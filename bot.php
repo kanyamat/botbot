@@ -46,9 +46,12 @@ if (!is_null($events['events'])) {
   }else if (strpos($_msg, 'find') !==false){
 	  
        $replyToken = $event['replyToken'];
-       $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
        $x_tra = str_replace("หา","", $_msg);
+       $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+      
        $json= file_get_contents($url);
+	  
+	  
        $events = json_decode($json, true);
 		  for ($x = 0; $x <= 4; $x++) {
 		    $title= $events['items'][$x]['title'];
