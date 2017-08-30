@@ -214,8 +214,12 @@ if (!is_null($events['events'])) {
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
     $title2= $events['items'][1]['title'];
+    $title3= $events['items'][0]['title'];
+    $title4= $events['items'][1]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
+    $link3 = $events['items'][0]['link'];
+    $link4 = $events['items'][1]['link'];
     $messages = [ 
    
   'type'=> 'template',
@@ -254,6 +258,40 @@ if (!is_null($events['events'])) {
                     'type'=> 'uri',
                     'label'=> 'ไปยังลิงค์',
                     'uri'=> $link2
+                ]
+            ]
+          ],
+	  [
+            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
+            'title' =>  $x_tra,
+            'text' =>   $title3,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'OK',
+                    'data'=> 'action=buy&itemid=222'
+                ],
+                [
+                    'type'=> 'uri',
+                    'label'=> 'ไปยังลิงค์',
+                    'uri'=> $link3
+                ]
+            ]
+          ],
+	   [
+            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
+            'title4' =>  $x_tra,
+            'text' =>   $title4,
+            'actions'=> [
+                [
+                    'type'=> 'postback',
+                    'label'=> 'OK',
+                    'data'=> 'action=buy&itemid=222'
+                ],
+                [
+                    'type'=> 'uri',
+                    'label'=> 'ไปยังลิงค์',
+                    'uri'=> $link4
                 ]
             ]
           ]
