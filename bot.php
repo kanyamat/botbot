@@ -68,7 +68,7 @@ if (!is_null($events['events'])) {
 	     'type' => 'text',
 	     //'title' => $x_tra,
 	     'text' => $title,
-	     'uri' => $link
+	     //'uri' => $link
 
 	     ];
 	  
