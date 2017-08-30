@@ -218,8 +218,8 @@ if (!is_null($events['events'])) {
     $title4= $events['items'][1]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
-    $link3 = $events['items'][0]['link'];
-    $link4 = $events['items'][1]['link'];
+    $link3 = $events['items'][2]['link'];
+    $link4 = $events['items'][3]['link'];
     $messages = [ 
    
   'type'=> 'template',
