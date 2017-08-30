@@ -65,10 +65,10 @@ if (!is_null($events['events'])) {
 // 	} 
 	   $messages = [
 
-	     'type' => 'text',
-	     //'title' => $x_tra,
+	     'type' => 'uri',
+	     'title' => $x_tra,
 	     'text' => $x,
-	     //'uri' => $link
+	     'uri' => $x
 
 	     ];
 	  
