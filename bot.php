@@ -43,43 +43,6 @@ if (!is_null($events['events'])) {
         'text' => $text
       ]; 
 
-//   }else if (strpos($_msg, 'find') !==false){
-	  
-//        $replyToken = $event['replyToken'];
-//        $x_tra = str_replace("find","", $_msg);
-//        $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-//        $json= file_get_contents($url);
-//        $events = json_decode($json, true);
-//         //$z = [];
-//  	  //$z = array(
-// 		  for ($x = 0; $x <= 4; $x++) {
-// 		    $title= $events['items'][$x]['title'];
-// 		    $link = $events['items'][$x]['link'];
-// 		} );
-// //           array_push($z);  
-	  
-// 	  	$myObj->$title = $events['items'][$x]['title'];
-// 		$myObj->$link = $events['items'][$x]['link'];
-		
-// 		$myJSON = json_encode($myObj);
-
-// 		//echo $myJSON;
-
-// // 	$i = 0; 
-
-// // 	while($i <= 4) {
-// // 	    $title= $events['items'][$i]['title'];
-// // 	    $link = $events['items'][$i]['link'];
-// // 	    $i++;
-// // 	} 
-// 	   $messages = [
-
-//  		'type' => 'text',
-//         	'text' => $myJSON
-
-// 	     ];
-	  
-
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
     $replyToken = $event['replyToken'];   
    $messages = [
@@ -337,7 +300,34 @@ if (!is_null($events['events'])) {
   
 ]
 ]; 
-	  
+
+  } else if (strpos($_msg, 'คำนวณ') !== false) {
+ $replyToken = $event['replyToken'];
+     
+    $x_tra = str_replace("คำนวณ","", $_msg);
+    $pieces = explode(":", $x_tra);
+    $height =str_replace("","",$pieces[0]);
+    $width =str_replace("","",$pieces[1]);
+    //Post New Data
+    $result = $width/($height*$height);
+   
+        $messages = [
+        'type' => 'template',
+        'altText' => 'BMI chart',
+        'template' => [
+            'type' => 'buttons',
+            'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/baby.jpg',
+            'title' => 'BMI',
+            'text' => $result ,
+            'actions' => [
+                [
+                    'type' => 'uri',
+                    'label' => 'chart',
+                    'uri' => 'http://botbot1234.herokuapp.com/chart.html'
+                ]
+            ]
+        ]
+    ];	  
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
