@@ -10,14 +10,14 @@ $_msg = $events['events'][0]['message']['text'];
 
 $replyToken = $event['replyToken']; 
 
-      'actions' => [
-          [
-              'type' => 'uri',
-              'uri' => 'https://botbot1234.herokuapp.com/GoogleTrans.php'
-          ]
-       ];
+//       'actions' => [
+//           [
+//               'type' => 'uri',
+//               'uri' => 'https://botbot1234.herokuapp.com/GoogleTrans.php'
+//           ]
+//        ];
 
- //require_once("https://botbot1234.herokuapp.com/GoogleTrans.php");
+ require_once("https://botbot1234.herokuapp.com/GoogleTrans.php");
  $word = $_REQUEST['word'];
  $GT = NEW GoogleTranslate();
  $response = $GT->translate('th','en',$word);  
