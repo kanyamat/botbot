@@ -154,10 +154,11 @@ if (!is_null($events['events'])) {
                     'label'=> 'ไปยังลิงค์',
                     'uri'=> $events['items'][$i]['link'];,
                 ]
-	  }
-		]
-            ]
+	  
+	    ]}
+           ]
           ]
+	]
 	];
 	 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
