@@ -210,40 +210,44 @@ if (!is_null($events['events'])) {
 ]
 ]; 
 
-  } else if (strpos($_msg, 'คำนวณ') !== false) {
- $replyToken = $event['replyToken'];
+//   } else if (strpos($_msg, 'คำนวณ') !== false) {
+//  $replyToken = $event['replyToken'];
      
-    $x_tra = str_replace("คำนวณ","", $_msg);
-    $pieces = explode(":", $x_tra);
-    $height =str_replace("","",$pieces[0]);
-    $width =str_replace("","",$pieces[1]);
-    //Post New Data
-    $result = $width/($height*$height);
+//     $x_tra = str_replace("คำนวณ","", $_msg);
+//     $pieces = explode(":", $x_tra);
+//     $height =str_replace("","",$pieces[0]);
+//     $width =str_replace("","",$pieces[1]);
+//     //Post New Data
+//     $result = $width/($height*$height);
    
-        $messages = [
-        'type' => 'template',
-        'altText' => 'BMI chart',
-        'template' => [
-            'type' => 'buttons',
-            'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/baby.jpg',
-            'title' => 'BMI',
-            'text' => $result ,
-            'actions' => [
-                [
-                    'type' => 'uri',
-                    'label' => 'chart',
-                    'uri' => 'http://botbot1234.herokuapp.com/chart.html'
-                ]
-            ]
-        ]
-    ];
+//         $messages = [
+//         'type' => 'template',
+//         'altText' => 'BMI chart',
+//         'template' => [
+//             'type' => 'buttons',
+//             'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/baby.jpg',
+//             'title' => 'BMI',
+//             'text' => $result ,
+//             'actions' => [
+//                 [
+//                     'type' => 'uri',
+//                     'label' => 'chart',
+//                     'uri' => 'http://botbot1234.herokuapp.com/chart.html'
+//                 ]
+//             ]
+//         ]
+//     ];
 	  
    } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
 	//$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
-	require_once("https://botbot1234.herokuapp.com/ThToEn.php");      
-	
+	//require_once("https://botbot1234.herokuapp.com/ThToEn.php");      
+	'actions' => [
+                [
+                    'type' => 'uri',
+                    'uri' => 'https://botbot1234.herokuapp.com/ThToEn.php'
+                ]
 // 	      $messages = [
 // 		'type' => 'text',
 // 		'text' => $url
