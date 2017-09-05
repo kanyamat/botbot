@@ -50,39 +50,7 @@ if (!is_null($events['events'])) {
      'text' => "เราชื่อ botbot นะ"
      ];
    
-  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "button"){
-    $replyToken = $event['replyToken']; 
-    $messages = [
-   
-  'type'=> 'template',
-  'altText'=> 'this is a buttons template',
-  'template'=> [
-      'type'=> 'buttons',
-      'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/image.jpg',
-      'title'=> 'Menu',
-      'text'=> 'Please select',
-      'actions'=> [
-          [
-            'type'=> 'postback',
-            'label'=> 'Buy',
-            'data'=> 'action=buy&itemid=123'
-          ],
-          [
-            'type'=> 'postback',
-            'label'=> 'Add to cart',
-            'data'=> 'action=add&itemid=123'
-          ],
-          [
-            'type'=> 'uri',
-            'label'=> 'View detail',
-            'uri'=> 'http://example.com/page/123'
-          ]
-      ]
-  ]
-
-];  
-  
-  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "con"){
+  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ok"){
    $replyToken = $event['replyToken']; 
 //    $event = strtolower('text');
     
@@ -106,65 +74,6 @@ if (!is_null($events['events'])) {
       ]
   ]
 ];  
-   
-  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "caro"){
-    $replyToken = $event['replyToken']; 
-    $messages = [ 
-   
-  'type'=> 'template',
-  'altText'=> 'this is a carousel template',
-  'template'=> [
-      'type'=> 'carousel',
-      'columns'=> [
-          [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
-            'title'=> 'this is menu',
-            'text'=> 'description',
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'Buy',
-                    'data'=> 'action=buy&itemid=111'
-                ],
-                [
-                    'type'=> 'postback',
-                    'label'=> 'Add to cart',
-                    'data'=> 'action=add&itemid=111'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'View detail',
-                    'uri'=> 'http://example.com/page/111'
-                ]
-            ]
-          ],
-          [
-            'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
-            'title'=> 'this is menu',
-            'text'=> 'description',
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'Buy',
-                    'data'=> 'action=buy&itemid=222'
-                ],
-                [
-                    'type'=> 'postback',
-                    'label'=> 'Add to cart',
-                    'data'=> 'action=add&itemid=222'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'View detail',
-                    'uri'=> 'http://example.com/page/222'
-                ]
-            ]
-          ]
-      ]
-  
-]
-]; 
-   
    
   }else if (strpos($_msg, 'หา') !== false) {
     $replyToken = $event['replyToken'];
@@ -329,8 +238,17 @@ if (!is_null($events['events'])) {
         ]
     ];
 	  
+   } else if (strpos($_msg, 'แปล') !== false) {
+	$replyToken = $event['replyToken'];
+	$x_tra = str_replace("แปล","", $_msg);
+	$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
+	      
+	
+	      $messages = [
+		'type' => 'text',
+		'text' => $url
+	      ]; 
 
-	  
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
