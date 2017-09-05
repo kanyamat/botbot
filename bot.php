@@ -137,7 +137,8 @@ if (!is_null($events['events'])) {
   'template'=> [
       'type'=> 'carousel',
       'columns'=> [
-          [ for (i = 0 ; i < count($events['item'] ; i++)){
+          [ 
+	for (i = 0 ; i < count($events['item'] ; i++)){
 	  
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
@@ -153,9 +154,10 @@ if (!is_null($events['events'])) {
                     'label'=> 'ไปยังลิงค์',
                     'uri'=> $events['items'][$i]['link'];,
                 ]
+	  }
             ]
           ];
-	  }
+	 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
