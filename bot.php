@@ -301,34 +301,6 @@ if (!is_null($events['events'])) {
 ]
 ]; 
 
-//   } else if (strpos($_msg, 'คำนวณ') !== false) {
-//  $replyToken = $event['replyToken'];
-     
-//     $x_tra = str_replace("คำนวณ","", $_msg);
-//     $pieces = explode(":", $x_tra);
-//     $height =str_replace("","",$pieces[0]);
-//     $width =str_replace("","",$pieces[1]);
-//     //Post New Data
-//     $result = $width/($height*$height);
-   
-//         $messages = [
-//         'type' => 'template',
-//         'altText' => 'BMI chart',
-//         'template' => [
-//             'type' => 'buttons',
-//             'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/baby.jpg',
-//             'title' => 'BMI',
-//             'text' => $result ,
-//             'actions' => [
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'chart',
-//                     'uri' => 'http://botbot1234.herokuapp.com/chart.html'
-//                 ]
-//             ]
-//         ]
-//     ];
-	  
   } else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
      
@@ -339,9 +311,6 @@ if (!is_null($events['events'])) {
     //Post New Data
     $result = $width/($height*$height);
    
-    echo "<a href='te.html?phone= $result'></a>";
-   
-    $result
         $messages = [
         'type' => 'template',
         'altText' => 'BMI chart',
@@ -359,6 +328,8 @@ if (!is_null($events['events'])) {
             ]
         ]
     ];
+	  
+
 	  
   }else{
 	   $replyToken = $event['replyToken'];
