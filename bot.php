@@ -155,8 +155,10 @@ if (!is_null($events['events'])) {
                     'uri'=> $events['items'][$i]['link'];,
                 ]
 	  }
+		]
             ]
-          ];
+          ]
+	];
 	 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
