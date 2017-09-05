@@ -121,15 +121,15 @@ if (!is_null($events['events'])) {
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     $events = json_decode($json, true);
-    $title= $events['items'][0]['title'];
-    $title2= $events['items'][1]['title'];
-    $title3= $events['items'][2]['title'];
-    $title4= $events['items'][3]['title'];
+//     $title= $events['items'][0]['title'];
+//     $title2= $events['items'][1]['title'];
+//     $title3= $events['items'][2]['title'];
+//     $title4= $events['items'][3]['title'];
     
-    $link = $events['items'][0]['link'];
-    $link2 = $events['items'][1]['link'];
-    $link3 = $events['items'][2]['link'];
-    $link4 = $events['items'][3]['link'];
+//     $link = $events['items'][0]['link'];
+//     $link2 = $events['items'][1]['link'];
+//     $link3 = $events['items'][2]['link'];
+//     $link4 = $events['items'][3]['link'];
     $messages = [ 
    
   'type'=> 'template',
@@ -137,10 +137,11 @@ if (!is_null($events['events'])) {
   'template'=> [
       'type'=> 'carousel',
       'columns'=> [
-          [
+          [ for (i = 0 ; i < count($events['item'] ; i++)){
+	  
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
-            'text' =>   $title,
+            'text' =>   $events['items'][$i]['title'];,
             'actions'=> [
                 [
                     'type'=> 'postback',
@@ -150,66 +151,11 @@ if (!is_null($events['events'])) {
                 [
                     'type'=> 'uri',
                     'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link
+                    'uri'=> $events['items'][$i]['link'];,
                 ]
             ]
-          ],
-          [
-            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
-            'title' =>  $x_tra,
-            'text' =>   $title2,
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'OK',
-                    'data'=> 'action=buy&itemid=222'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link2
-                ]
-            ]
-          ],
-	  [
-            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
-            'title' =>  $x_tra,
-            'text' =>   $title3,
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'OK',
-                    'data'=> 'action=buy&itemid=222'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link3
-                ]
-            ]
-          ],
-	  [
-            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/chin.png',
-            'title' =>  $x_tra,
-            'text' =>   $title4,
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'OK',
-                    'data'=> 'action=buy&itemid=222'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link4
-                ]
-            ]
-          ]
-      ]
-  
-]
-]; 
-
+          ];
+	  }
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
