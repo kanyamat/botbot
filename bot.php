@@ -238,16 +238,16 @@ if (!is_null($events['events'])) {
 //         ]
 //     ];
 	  
-   } else if (strpos($_msg, 'แปล') !== false) {
-	$replyToken = $event['replyToken'];
-	$x_tra = str_replace("แปล","", $_msg);
-	//$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
-	//require_once("https://botbot1234.herokuapp.com/ThToEn.php");      
-	'actions' => [
-                [
-                    'type' => 'uri',
-                    'uri' => 'https://botbot1234.herokuapp.com/ThToEn.php'
-                ]
+//    } else if (strpos($_msg, 'แปล') !== false) {
+// 	$replyToken = $event['replyToken'];
+// 	$x_tra = str_replace("แปล","", $_msg);
+// 	//$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
+// 	//require_once("https://botbot1234.herokuapp.com/ThToEn.php");      
+// 	'actions' => [
+//                 [
+//                     'type' => 'uri',
+//                     'uri' => 'https://botbot1234.herokuapp.com/ThToEn.php'
+//                 ]
 // 	      $messages = [
 // 		'type' => 'text',
 // 		'text' => $url
