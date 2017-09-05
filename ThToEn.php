@@ -8,9 +8,11 @@ $data = json_decode($json,true);
 $events = json_decode($content, true);
 $_msg = $events['events'][0]['message']['text'];
 
-
 $replyToken = $event['replyToken']; 
- require_once "https://botbot1234.herokuapp.com/GoogleTrans.php";
+
+
+
+ require_once("https://botbot1234.herokuapp.com/GoogleTrans.php");
  $word = $_REQUEST['word'];
  $GT = NEW GoogleTranslate();
  $response = $GT->translate('th','en',$word);  
@@ -21,6 +23,7 @@ $replyToken = $event['replyToken'];
      'type' => 'text',
      'text' => $word. " = " .$response;
      ];
+
 
 
   $url = 'https://api.line.me/v2/bot/message/reply';
