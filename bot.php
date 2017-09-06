@@ -123,12 +123,12 @@ if (!is_null($events['events'])) {
     $json= file_get_contents($url);
     $events = json_decode($json, true);
    
-	
-	
-    $messages = [ 
-   for ($i = 0 ; $i <= 4 ; $i++){ 
+	   for ($i = 0 ; $i <= 4 ; $i++){ 
 	    $title= $events['items'][$i]['title'];
 	    $link = $events['items'][$i]['link'];
+	
+    $messages = [ 
+
 	  'type'=> 'template',
 	  'altText'=> 'this is a carousel template',
 	  'template'=> [
@@ -156,9 +156,9 @@ if (!is_null($events['events'])) {
 		    ]
 		]
 		    ]
-		  ]}
+		  ]
 		];
-	
+	}
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
