@@ -134,7 +134,7 @@ if (!is_null($events['events'])) {
   'template'=> [
       'type'=> 'carousel',
       'columns'=> [ 
-          [ 
+           
 	
 	  //count($events['item']
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
@@ -154,8 +154,8 @@ if (!is_null($events['events'])) {
 	  
 	    ]
 	
-           ]
-	      ]
+           
+	  ]
           ]
 	];
 	 
