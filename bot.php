@@ -131,9 +131,9 @@ if (!is_null($events['events'])) {
   'altText'=> 'this is a carousel template',
   'template'=> [
       'type'=> 'carousel',
-      'columns'=> [
+      'columns'=> [ for ($i = 0 ; $i < 5 ; $i++){
           [ 
-	for ($i = 0 ; $i < 5 ; $i++){
+	
 	  //count($events['item']
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
@@ -151,8 +151,8 @@ if (!is_null($events['events'])) {
                 ]
 	  
 	    ]
-	}
-           ]
+	
+           ]}
 	      ]
           ]
 	];
