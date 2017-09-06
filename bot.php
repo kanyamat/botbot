@@ -129,35 +129,34 @@ if (!is_null($events['events'])) {
 	
     $messages = [ 
    
-  'type'=> 'template',
-  'altText'=> 'this is a carousel template',
-  'template'=> [
-      'type'=> 'carousel',
-      'columns'=> [ 
-           
+	  'type'=> 'template',
+	  'altText'=> 'this is a carousel template',
+	  'template'=> [
+	      'type'=> 'carousel',
+	      'columns'=> [ 
+			[
 	
-	  //count($events['item']
-            //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
-            'title' =>  $x_tra,
-            'text' =>   $title,
-            'actions'=> [
-                [
-                    'type'=> 'postback',
-                    'label'=> 'OK',
-                    'data'=> 'action=buy&itemid=111'
-                ],
-                [
-                    'type'=> 'uri',
-                    'label'=> 'ไปยังลิงค์',
-                    'uri'=> $link
-                ]
-	  
-	    ]
-	
-           
-	  ]
-          ]
-	];
+		  //count($events['item']
+		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
+		    'title' =>  $x_tra,
+		    'text' =>   $title,
+		    'actions'=> [
+			[
+			    'type'=> 'postback',
+			    'label'=> 'OK',
+			    'data'=> 'action=buy&itemid=111'
+			],
+			[
+			    'type'=> 'uri',
+			    'label'=> 'ไปยังลิงค์',
+			    'uri'=> $link
+			]
+
+		    ]
+		]
+		  ]
+		  ]
+		];
 	 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
