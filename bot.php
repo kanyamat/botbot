@@ -122,9 +122,10 @@ if (!is_null($events['events'])) {
 //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     $events = json_decode($json, true);
-   
-
-	
+   	for ($i = 0 ; $i < 5 ; $i++){ 
+		$title= $events['items'][$i]['title'];
+		$link = $events['items'][$i]['link'];
+				
     $messages = [ 
 
 	  'type'=> 'template',
@@ -134,9 +135,7 @@ if (!is_null($events['events'])) {
 	      'columns'=> [ 
 	
 			[
-			for ($i = 0 ; $i <= 4 ; $i++){ 
-			    $title= $events['items'][$i]['title'];
-			    $link = $events['items'][$i]['link'];
+
 		  //count($events['item']
 		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
 		    'title' =>  $x_tra,
@@ -155,11 +154,11 @@ if (!is_null($events['events'])) {
 			]
 		
 		    ]
-		}]
+		]
 		    ]
 		  ]
 		];
-	
+}	
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
