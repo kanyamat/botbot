@@ -122,14 +122,9 @@ if (!is_null($events['events'])) {
     $json= file_get_contents($url);
     $events = json_decode($json, true);
 //     $title= $events['items'][0]['title'];
-//     $title2= $events['items'][1]['title'];
-//     $title3= $events['items'][2]['title'];
-//     $title4= $events['items'][3]['title'];
     
 //     $link = $events['items'][0]['link'];
-//     $link2 = $events['items'][1]['link'];
-//     $link3 = $events['items'][2]['link'];
-//     $link4 = $events['items'][3]['link'];
+
     $messages = [ 
    
   'type'=> 'template',
@@ -158,8 +153,8 @@ if (!is_null($events['events'])) {
 	    ]
 	}
            ]
+	      ]
           ]
-	]
 	];
 	 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
