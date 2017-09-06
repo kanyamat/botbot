@@ -139,7 +139,7 @@ if (!is_null($events['events'])) {
 	  //count($events['item']
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
-            'text' =>   $title
+            'text' =>   $title,
             'actions'=> [
                 [
                     'type'=> 'postback',
