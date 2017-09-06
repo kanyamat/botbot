@@ -123,10 +123,10 @@ if (!is_null($events['events'])) {
     $json= file_get_contents($url);
     $events = json_decode($json, true);
    
-	for ($i = 0 ; $i < 5 ; $i++){
-	   $title= $events['items'][$i]['title'];
-           $link = $events['items'][$i]['link'];
-	}  
+	//for ($i = 0 ; $i < 5 ; $i++){
+	   $title= $events['items'][$0]['title'];
+           $link = $events['items'][$0]['link'];
+	//}  
     $messages = [ 
    
   'type'=> 'template',
