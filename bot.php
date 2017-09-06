@@ -134,15 +134,15 @@ if (!is_null($events['events'])) {
 	      'columns'=> [ 
 	
 			[
-
+			for ($i = 0 ; $i <= 4 ; $i++){ 
+			    $title= $events['items'][$i]['title'];
+			    $link = $events['items'][$i]['link'];
 		  //count($events['item']
 		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
 		    'title' =>  $x_tra,
 		    'text' =>   $title,
 		    'actions'=> [
-			    	   for ($i = 0 ; $i <= 4 ; $i++){ 
-	    $title= $events['items'][$i]['title'];
-	    $link = $events['items'][$i]['link'];
+
 			[
 			    'type'=> 'postback',
 			    'label'=> 'OK',
@@ -153,9 +153,9 @@ if (!is_null($events['events'])) {
 			    'label'=> 'ไปยังลิงค์',
 			    'uri'=> $link
 			]
-		}
+		
 		    ]
-		]
+		}]
 		    ]
 		  ]
 		];
