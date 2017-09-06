@@ -123,9 +123,7 @@ if (!is_null($events['events'])) {
     $json= file_get_contents($url);
     $events = json_decode($json, true);
    
-	   for ($i = 0 ; $i <= 4 ; $i++){ 
-	    $title= $events['items'][$i]['title'];
-	    $link = $events['items'][$i]['link'];
+
 	
     $messages = [ 
 
@@ -142,6 +140,9 @@ if (!is_null($events['events'])) {
 		    'title' =>  $x_tra,
 		    'text' =>   $title,
 		    'actions'=> [
+			    	   for ($i = 0 ; $i <= 4 ; $i++){ 
+	    $title= $events['items'][$i]['title'];
+	    $link = $events['items'][$i]['link'];
 			[
 			    'type'=> 'postback',
 			    'label'=> 'OK',
@@ -152,13 +153,13 @@ if (!is_null($events['events'])) {
 			    'label'=> 'ไปยังลิงค์',
 			    'uri'=> $link
 			]
-
+		}
 		    ]
 		]
 		    ]
 		  ]
 		];
-	}
+	
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
