@@ -137,7 +137,7 @@ if (!is_null($events['events'])) {
 	  //count($events['item']
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
-            'text' =>   $events['items'][$i]['title'];,
+            'text' =>   $events['items'][$i]['title'];
             'actions'=> [
                 [
                     'type'=> 'postback',
@@ -147,7 +147,7 @@ if (!is_null($events['events'])) {
                 [
                     'type'=> 'uri',
                     'label'=> 'ไปยังลิงค์',
-                    'uri'=> $events['items'][$i]['link'];,
+                    'uri'=> $events['items'][$i]['link'];
                 ]
 	  
 	    ]
