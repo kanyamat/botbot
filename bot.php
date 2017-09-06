@@ -138,8 +138,8 @@ if (!is_null($events['events'])) {
       'type'=> 'carousel',
       'columns'=> [
           [ 
-	for (i = 0 ; i < count($events['item'] ; i++)){
-	  
+	for (i = 0 ; i < 5 ; i++)){
+	  //count($events['item']
             //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
             'title' =>  $x_tra,
             'text' =>   $events['items'][$i]['title'];,
