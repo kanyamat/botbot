@@ -126,7 +126,7 @@ if (!is_null($events['events'])) {
 	for ($i = 0 ; $i <= 5 ; $i++){ 
 	    $title= $events['items'][$i]['title'];
 	    $link = $events['items'][$i]['link'];
-	} 
+	
     $messages = [ 
    
 	  'type'=> 'template',
@@ -157,7 +157,7 @@ if (!is_null($events['events'])) {
 		  ]
 		  ]
 		];
-	 
+	 } 
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
 //  $replyToken = $event['replyToken'];
      
