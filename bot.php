@@ -126,15 +126,15 @@ if (!is_null($events['events'])) {
 	
 	
     $messages = [ 
-   
+   for ($i = 0 ; $i <= 4 ; $i++){ 
+	    $title= $events['items'][$i]['title'];
+	    $link = $events['items'][$i]['link'];
 	  'type'=> 'template',
 	  'altText'=> 'this is a carousel template',
 	  'template'=> [
 	      'type'=> 'carousel',
 	      'columns'=> [ 
-	for ($i = 0 ; $i <= 4 ; $i++){ 
-	    $title= $events['items'][$i]['title'];
-	    $link = $events['items'][$i]['link'];
+	
 			[
 
 		  //count($events['item']
@@ -155,8 +155,8 @@ if (!is_null($events['events'])) {
 
 		    ]
 		]
-		  }  ]
-		  ]
+		    ]
+		  ]}
 		];
 	
 //   } else if (strpos($_msg, 'คำนวณ') !== false) {
