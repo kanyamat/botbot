@@ -1,310 +1,89 @@
 <?php
-$access_token = 'GKg1wAZ/gjMr6yh3dGmPjuq8HnkDQEZsOdPEfyur3h7JmjdT2JihbEBHL6S4BrLnHCuu0Cv2fSbvwv0/xZqYw+TEjmmqW2mjC5NB9BcVGguZq3CIHX+Vt+fvPcNwtcT2ER0LLVXSwhNN4aVJT0Q08QdB04t89/1O/w1cDnyilFU=';
-// Get POST body content
-$content = file_get_contents('php://input');
-$data = json_decode($json,true);
-// Parse JSON
-$events = json_decode($content, true);
-$_msg = $events['events'][0]['message']['text'];
-// Validate parsed JSON data
-if (!is_null($events['events'])) {
- // Loop through each event
- foreach ($events['events'] as $event) {
-  // Reply only when message sent is in 'text' format
-  if (strpos($_msg, 'สวัสดี') !== false) {
-      $replyToken = $event['replyToken'];
-      $text = "สวัสดีค่ะ";
-      $messages = [
-        'type' => 'text',
-        'text' => $text
-      ];
-  }elseif($event['type'] == 'message' && $event['message']['type'] == 'sticker') {
-     // Get text sent
-   //    $text = $event['template'];
-   //    $text = "hello world!";
-   $st1 = $events['events'][0]['message']['packageId'];
-   $st2 = $events['events'][0]['message']['stickerId'];
-   // Get replyToken
-   $replyToken = $event['replyToken'];
-   // Build message to reply back
-   $messages = [
-    'type'=> 'sticker',
-    'packageId'=> $st1,
-    'stickerId'=> $st2
-   ];
-   
-  }elseif($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ปุ่ม") {
-     $replyToken = $event['replyToken'];
-        $messages = [
-        'type' => 'template',
-        'altText' => 'ボタン',
-        'template' => [
-            'type' => 'buttons',
-            'title' => 'อากาศเป็นไงบ้าง',
-            'text' => 'อากาศ',
-            'actions' => [
-//                 [
-//                     'type' => 'postback',
-//                     'label' => 'good',
-//                     'data' => 'value'
-//                 ],
-                [
-                    'type' => 'uri',
-                    'label' => 'google',
-                    'uri' => 'https://google.com'
-                ]
-            ]
-        ]
-    ];
- } elseif ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ยืนยัน") {
-    $replyToken = $event['replyToken'];
-    $messages = [
-       'type' => 'template',
-        'altText' => 'this is a confirm template',
-        'template' => [
-            'type' => 'confirm',
-            'text' => 'Are you sure?',
-            'actions' => [
-                [
-                    'type' => 'message',
-                    'label' => 'yes',
-                    'text' => 'yes'
-                ],
-                [
-                    'type' => 'message',
-                    'label' => 'no',
-                    'text' => 'no'
-                ],
-            ]
-        ]
-    ];
-} elseif ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ทดสอบ") {
- $replyToken = $event['replyToken'];
- $messages = [
-        'type' => 'template',
-        'altText' => 'this is a carousel template',
-        'template' => [
-            'type' => 'carousel',
-            'columns' => [
-               [
-                    'title' => 'this is menu',
-                    'text' => 'description',
-                    'actions' => [
-                        [
-                            'type' => 'postback',
-                            'label' => 'buy',
-                            'data' => 'value'
-                        ],
-                        [
-                            'type' => 'uri',
-                            'label' => 'add to cart',
-                            'uri' => 'http://clinic.e-kuchikomi.info/'
-                        ]
-                    ]
-                ],
-                [
-                    'title' => 'this is menu',
-                    'text' => 'description',
-                    'actions' => [
-                        [
-                            'type' => 'postback',
-                            'label' => 'buy',
-                            'data' => 'value'
-                        ],
-                        [
-                            'type' => 'uri',
-                            'label' => 'add to catrt',
-                            'uri' => 'https://jobikai.com/'
-                        ]
-                    ]
-                ],
-            ]
-        ]
-    ];
-      
-} elseif (strpos($_msg, 'คำนวณ') !== false) {
- $replyToken = $event['replyToken'];
-   
-    $x_tra = str_replace("คำนวณ","", $_msg);
-    $pieces = explode(":", $x_tra);
-    $height =str_replace("","",$pieces[0]);
-    $width =str_replace("","",$pieces[1]);
-    //Post New Data
-     $result = $width/($height*$height);
-    $messages = [
-          'type' => 'text',
-          'text' => $result
-        ];
- } elseif (strpos($_msg, 'หา') !== false) {
-    $replyToken = $event['replyToken'];
-    $x_tra = str_replace("หา","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-    $title= $events['items'][0]['title'];
-    $link = $events['items'][0]['link'];
-    $items = $events['items'];
-    $data1 = array(); 
-    $val = array();
-$data = [];
- $val = [];
-$g = [];
-$x = [];
-   $z = [];
-$action = [];
-// $eventsdata = array_slice($events->items,5);
-    foreach($events->items as $mydata)
-    {
-//        echo $mydata->title;
-//        echo $mydata->link;
-        $z = array( 'type' => 'uri',
-                    'label' => 'Click for detail',
-                    'uri' => $mydata->link
-                  );
-     
-        array_push($action,$z);
-        $x = array ( 'title' => $mydata->title,
-                    'text' => 'description',
-                    'actions' => [$action]
-                  );
-     
-     
-        array_push($g,$x);
-        $action = [];
-        
-        //echo $mydata->title. "\n";
-        //echo $mydata->link. "\n"; 
-//        $val = array(
-//                "thumbnailImageUrl" => "https://example.com/bot/images/item1.jpg",
-//                "title" => $mydata->title
-////                 "actions" => [{
-////                                "type"=> "uri",
-////                                "label" => $mydata->title,
-////                                "uri" => $mydata->link
-////                                }]
-//                
-//                );
-//        array_push($data,$val);
-    }
-   
-   $messages = [
-        'type' => 'template',
-        'altText' => 'this is a carousel template',
-        'template' => [
-            'type' => 'carousel',
-            'columns' => [
-               [
-                    'title' => 'hello',
-                    'text' => 'description',
-                    'actions' => [$z]
-               ]
-            ]
-        ]
-    ];
-   /*
-$messages = array('type' => 'template',
-            'altText' => 'this is a carousel template',
-            'template' => array ('type' => 'carousel',
-                                 'columns' => [$g]
-                                )
-            );
-   
-   $a = [];
-$d = array('type' => 'uri',
-                            'label' => 'add to cart',
-                            'uri' => 'http://clinic.e-kuchikomi.info/');
-   /*
-//array_push($a,$c);
-array_push($a,$d); */
-/*
-   //$a = json_encode($a);
-   
-    $messages = [
-        'type' => 'template',
-        'altText' => 'this is a carousel template',
-        'template' => [
-            'type' => 'carousel',
-            'columns' => [
-               [
-                    'title' => 'Hello world',
-                    'text' => 'description',
-                    'actions' => [$d]
-                    ],
-                [
-                    'title' => 'this is menu',
-                    'text' => 'description',
-                    'actions' => [
-                     [
-                            'type' => 'uri',
-                            'label' => 'add to catrt',
-                            'uri' => 'https://jobikai.com/'
-                     ]
-                    ]
-                ],
-            ]
-        ]
-    ];
-   /*
-   */
-   //$re = $events['kind'];
-    
-  
-//         foreach($mydata->values as $values)
-//         {
-//             echo $values->value . "\n";
-//         }
-//    $messages = [
-//         'type' => 'template',
-//         'altText' => 'template',
-//         'template' => [
-//             'type' => 'buttons',
-//             'title' =>  $x_tra,
-//             'text' =>   $title,
-//             'actions' => [
-// //                 [
-// //                     'type' => 'postback',
-// //                     'label' => 'good',
-// //                     'data' => 'value'
-// //                 ],
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์',
-//                     'uri' => $link
-//                 ]
-//             ]
-//         ]
-//     ];
-  
- }else{
-    $replyToken = $event['replyToken'];
-    $text = "ว่าไงนะ";
-    $messages = [
-        'type' => 'text',
-        'text' => $text
-      ];
-    
-  }
-  
- }
+//require_once '../vendor/autoload.php';
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+$logger = new Logger('LineBot');
+$logger->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV["LINEBOT_ACCESS_TOKEN"]);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV["LINEBOT_CHANNEL_SECRET"]]);
+$signature = $_SERVER['HTTP_' . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+try {
+	$events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+} catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
+	error_log('parseEventRequest failed. InvalidSignatureException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
+	error_log('parseEventRequest failed. UnknownEventTypeException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
+	error_log('parseEventRequest failed. UnknownMessageTypeException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
+	error_log('parseEventRequest failed. InvalidEventRequestException => '.var_export($e, true));
 }
-  // Make a POST Request to Messaging API to reply to sender
-         $url = 'https://api.line.me/v2/bot/message/reply';
-         $data = [
-          'replyToken' => $replyToken,
-          'messages' => [$messages],
-         ];
-         error_log(json_encode($data));
-         $post = json_encode($data);
-         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-         $ch = curl_init($url);
-         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-         $result = curl_exec($ch);
-         curl_close($ch);
-         echo $result . "\r\n";
- 
-echo "OK"; 
-?>
+foreach ($events as $event) {
+	// Postback Event
+	if (($event instanceof \LINE\LINEBot\Event\PostbackEvent)) {
+		$logger->info('Postback message has come');
+		continue;
+	}
+	// Location Event
+	if  ($event instanceof LINE\LINEBot\Event\MessageEvent\LocationMessage) {
+		$logger->info("location -> ".$event->getLatitude().",".$event->getLongitude());
+		continue;
+	}
+	// Message Event = TextMessage
+	if (($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+		$messageText=strtolower(trim($event->getText()));
+		switch ($messageText) {
+		case "text" : 
+			$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("text message");
+			break;
+		case "location" :
+			$outputText = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("Eiffel Tower", "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France", 48.858328, 2.294750);
+			break;
+		case "button" :
+			$actions = array (
+				// general message action
+				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("button 1", "text 1"),
+				// URL type action
+				New \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("Google", "http://www.google.com"),
+				// The following two are interactive actions
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("next page", "page=3"),
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Previous", "page=1")
+			);
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("button text", "description", $img_url, $actions);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+			break;
+		case "carousel" :
+			$columns = array();
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			for($i=0;$i<5;$i++) {
+				$actions = array(
+					new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Add to Card","action=carousel&button=".$i),
+					new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("View","http://www.google.com")
+				);
+				$column = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Title", "description", $img_url , $actions);
+				$columns[] = $column;
+			}
+			$carousel = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Carousel Demo", $carousel);
+			break;	
+		case "image" :
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			$outputText = new LINE\LINEBot\MessageBuilder\ImageMessageBuilder($img_url, $img_url);
+			break;	
+		case "confirm" :
+			$actions = array (
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
+			);
+			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("problem", $actions);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+			break;
+		default :
+			$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("demo command: text, location, button, confirm to test message template");	
+			break;
+		}
+		$response = $bot->replyMessage($event->getReplyToken(), $outputText);
+	}
+} 
