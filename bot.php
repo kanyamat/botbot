@@ -216,9 +216,9 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$x_tra = str_replace("แปล","", $_msg);
 	  
 	require_once 'GoogleTranslate.php';
-	$word = $_REQUEST['word'];
+	$word = $_REQUEST['$x_tra'];
 	$GT = NEW GoogleTranslate();
-	$response = $GT->translate('th','en',$word,$x_tra);  
+	$response = $GT->translate('th','en',$word);  
 	
 
 	  $messages = [
