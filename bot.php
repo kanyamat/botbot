@@ -214,13 +214,11 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
    } else if (strpos($_msg, 'tran') !== false) {
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
-// 	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	
-	//$result = 'https://botbot1234.herokuapp.com/GoogleTranslate.php';
 	  
 	require_once 'GoogleTranslate.php';
-	$word = $_REQUEST['word'],[$x_tra];
+	$word = $_REQUEST['word'];
 	$GT = NEW GoogleTranslate();
-	$response = $GT->translate('th','en',$word);  
+	$response = $GT->translate('th','en',$word,$x_tra);  
 	
 
 	  $messages = [
