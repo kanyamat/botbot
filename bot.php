@@ -219,11 +219,11 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$word = $_REQUEST['word'];
 	$GT = NEW GoogleTranslate();
 	$response = $GT->translate('th','en',$word);  
-	//echo $word."   =   ".$response;
+	
 
 	  $messages = [
 		'type' => 'text',
-		'text' => $word
+		'text' => $word."   =   ".$response;
 	    ];	
   }else{
 	   $replyToken = $event['replyToken'];
