@@ -105,12 +105,12 @@ if (!is_null($events['events'])) {
                     'type' => 'uri',
                     'label' => 'ไปยังลิงค์',
                     'uri' => $link
+                ],
+		[
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link2
                 ]
-// 		                [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์2',
-//                     'uri' => $link2
-//                 ]
             ]
         ]
     ];
@@ -195,29 +195,33 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;
 	//$result = require_once "trans.php";
 
+      $messages = [
+        'type' => 'text',
+        'text' => require_once "trans.php";
+      ]; 
+	  
+//   $messages = [
+//         'type' => 'template',
+//         'altText' => 'template',
+//         'template' => [
+//             'type' => 'buttons',
+//             'title' =>  $x_tra,
+//             'text' =>   "แปล",
+//             'actions' => [
+//                 [
+//                     'type' => 'postback',
+//                     'label' => 'TRANS',
+//                     'data' => 'value'
+//                 ],
+//                 [
+//                     'type' => 'uri',
+//                     'label' => 'ไปยังลิงค์',
+//                     'uri' => $result
+//                 ]
 
-  $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  $x_tra,
-            'text' =>   "แปล",
-            'actions' => [
-                [
-                    'type' => 'postback',
-                    'label' => 'TRANS',
-                    'data' => 'value'
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $result
-                ]
-
-            ]
-        ]
-    ];
+//             ]
+//         ]
+//     ];
 	
 
   }else{
