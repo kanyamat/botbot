@@ -160,33 +160,34 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 		];
 }
 
-//   } else if (strpos($_msg, 'คำนวณ') !== false) {
-//  $replyToken = $event['replyToken'];
-     
-//     $x_tra = str_replace("คำนวณ","", $_msg);
-//     $pieces = explode(":", $x_tra);
-//     $height =str_replace("","",$pieces[0]);
-//     $width =str_replace("","",$pieces[1]);
-//     //Post New Data
-//     $result = $width/($height*$height);
+} elseif (strpos($_msg, 'คำนวณ') !== false) {
+ $replyToken = $event['replyToken'];
+//********คำวณBMI********//
+    $x_tra =  str_replace("คำนวณ","", $_msg);
+    $pieces = explode(":", $x_tra);
+    $height = str_replace("","",$pieces[0]);
+    $width  = str_replace("","",$pieces[1]);
+//********ใส่ 5 ค่าลง array********//	 
    
-//         $messages = [
-//         'type' => 'template',
-//         'altText' => 'BMI chart',
-//         'template' => [
-//             'type' => 'buttons',
-//             'thumbnailImageUrl'=> 'http://botbot1234.herokuapp.com/images/baby.jpg',
-//             'title' => 'BMI',
-//             'text' => $result ,
-//             'actions' => [
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'chart',
-//                     'uri' => 'http://botbot1234.herokuapp.com/chart.html'
-//                 ]
-//             ]
-//         ]
-//     ];
+    $result = $width/($height*$height);
+    
+        $messages = [
+        'type' => 'template',
+        'altText' => 'BMI chart',
+        'template' => [
+            'type' => 'buttons',
+            //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
+            'title' => 'BMI',
+            'text' => $result ,
+            'actions' => [
+                [
+                    'type' => 'uri',
+                    'label' => 'chart',
+                    'uri' => 'https://botbot1234.herokuapp.com/chart.php?data1='.$result.'&data2='.$width 
+                ]
+            ]
+        ]
+    ];
 	  
    } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
