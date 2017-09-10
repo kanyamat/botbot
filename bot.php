@@ -170,7 +170,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 //********ใส่ 5 ค่าลง array********//	 
    
     $result = $width/($height*$height);
-    
+   
         $messages = [
         'type' => 'template',
         'altText' => 'BMI chart',
@@ -193,16 +193,24 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
 	//$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
-	require_once("https://botbot1234.herokuapp.com/ThToEn.php");      
-// 	'actions' => [
-//                 [
-//                     'type' => 'uri',
-//                     'uri' => 'https://botbot1234.herokuapp.com/ThToEn.php'
-//                 ]
-// 	      $messages = [
-// 		'type' => 'text',
-// 		'text' => $url
-// 	      ]; 
+	
+ $messages = [
+        'type' => 'template',
+        'altText' => 'BMI chart',
+        'template' => [
+            'type' => 'buttons',
+            //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
+            'title' => 'BMI',
+            'text' => $result ,
+            'actions' => [
+                [
+                    'type' => 'uri',
+                    'label' => 'chart',
+                    'uri' => 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra
+                ]
+            ]
+        ]
+    ];
 
   }else{
 	   $replyToken = $event['replyToken'];
