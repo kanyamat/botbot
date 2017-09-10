@@ -197,7 +197,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 
       $messages = [
         'type' => 'text',
-        'text' => require_once "trans.php";
+        'text' => $result
       ]; 
 	  
 //   $messages = [
