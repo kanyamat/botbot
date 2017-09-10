@@ -215,15 +215,16 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
 // 	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	
-// 	$result2 = 'https://botbot1234.herokuapp.com/GoogleTranslate.php';
-// 	$word = $_REQUEST['word'];
-// 	$GT = NEW GoogleTranslate();
-// 	$response = $GT->translate('th','en',$word);  
+	//$result = 'https://botbot1234.herokuapp.com/GoogleTranslate.php';
+	require_once "https://botbot1234.herokuapp.com/GoogleTranslate.php";
+	$word = $_REQUEST['word'];
+	$GT = NEW GoogleTranslate();
+	$response = $GT->translate('th','en',$word);  
 	
 
 	  $messages = [
 		'type' => 'text',
-		'text' => 'https://botbot1234.herokuapp.com/trans.php?word='
+		'text' => $word."   =   ".$response
 	    ];	
 
   }else{
