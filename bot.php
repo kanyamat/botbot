@@ -196,34 +196,23 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	
 	
 	  
-      $messages = [
-        'type' => 'uri',
-	'label' => 'ไปยังลิงค์',
-        'uri' => $result
-      ]; 
-	  
-//   $messages = [
-//         'type' => 'template',
-//         'altText' => 'template',
-//         'template' => [
-//             'type' => 'buttons',
-//             'title' =>  $x_tra,
-//             'text' =>   "แปล",
-//             'actions' => [
-//                 [
-//                     'type' => 'postback',
-//                     'label' => 'TRANS',
-//                     'data' => 'value'
-//                 ],
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์',
-//                     'uri' => $result
-//                 ]
+  $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   "แปล",
+            'actions' => [
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $result
+                ]
 
-//             ]
-//         ]
-//     ];
+            ]
+        ]
+    ];
 	
 
   }else{
