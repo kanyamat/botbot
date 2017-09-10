@@ -197,7 +197,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	require_once ('GoogleTranslate.php');
 	$word = $_REQUEST['word'];
 	$GT = NEW GoogleTranslate();
-	$response = $GT->translate('th','en',$word);  
+	$response = $GT=>translate('th','en',$word);  
 	  
       $messages = [
         'type' => 'text',
