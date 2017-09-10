@@ -218,14 +218,14 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	//$result = 'https://botbot1234.herokuapp.com/GoogleTranslate.php';
 	  
 	require_once 'GoogleTranslate.php';
-	$word = $_REQUEST[$x_tra];
+	$word = $_REQUEST['word'].$x_tra;
 	$GT = NEW GoogleTranslate();
 	$response = $GT->translate('th','en',$word);  
 	
 
 	  $messages = [
 		'type' => 'text',
-		'text' => $word."   =   ".$response
+		'text' => $word."   =   ".$response.substr(tran)
 	    ];	
 
   }else{
