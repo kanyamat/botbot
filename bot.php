@@ -160,7 +160,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 		];
 }
 
-} elseif (strpos($_msg, 'คำนวณ') !== false) {
+} else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
 //********คำวณBMI********//
     $x_tra =  str_replace("คำนวณ","", $_msg);
@@ -192,29 +192,39 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
    } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
-	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;
-	
-	
+	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	  
+	  $messages = [
+		'type' => 'template',
+		'altText' => 'template',
+		'template' => [
+		    'type' => 'buttons',
+		    'title' =>  "Google Translate",
+		    'text' =>   "แปลคำว่า".$x_tra,
+		    'actions' => [
+			[
+			    'type' => 'uri',
+			    'label' => 'ไปยังลิงค์',
+			    'uri' => $result
+			]
+
+		    ]
+		]
+	    ];
 	  
-  $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  "Google Translate",
-            'text' =>   "แปลคำว่า".$x_tra,
-            'actions' => [
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $result
-                ]
+   } else if (strpos($_msg, 'tran') !== false) {
+	$replyToken = $event['replyToken'];
+	$x_tra = str_replace("แปล","", $_msg);
+	//$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	
+	require_once "GoogleTranslate.php";
+	$word = $_REQUEST['word'];
+	$GT = NEW GoogleTranslate();
+	$response = $GT->translate('th','en',$word);  
+	//echo $word."   =   ".$response;
 
-            ]
-        ]
-    ];
-	
-
+	  $messages = [
+		'type' => 'text',
+		'text' => $word
+	    ];	
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
