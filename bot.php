@@ -192,7 +192,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
    } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
-	$url = 'https://botbot1234.herokuapp.com/trans.php?word='
+	$url = 'https://botbot1234.herokuapp.com/trans.php?word=';
 	
 
 
