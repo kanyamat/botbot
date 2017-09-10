@@ -215,8 +215,8 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
 	  
-	$x_tra.require_once 'GoogleTranslate.php';
-	$word = $_REQUEST['word'];
+	require_once 'GoogleTranslate.php';
+	$word = $_REQUEST['word'].$x_tra;
 	$GT = NEW GoogleTranslate();
 	$response = $GT->translate('th','en',$word);  
 	
