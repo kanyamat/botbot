@@ -196,24 +196,28 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	//$result = require_once "trans.php";
 
 
- $messages = [
+  $messages = [
         'type' => 'template',
-        'altText' => 'trans',
+        'altText' => 'template',
         'template' => [
-            'type' => 'button',
-            //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
-             'title' => 'TRANS',
-            'text' => $result 
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            //'text' =>   $title,
             'actions' => [
                 [
+                    'type' => 'postback',
+                    'label' => 'TRANS',
+                    'data' => 'value'
+                ],
+                [
                     'type' => 'uri',
-                    'label' => 'trans',
+                    'label' => 'ไปยังลิงค์',
                     'uri' => $result
                 ]
+
             ]
-         ]
+        ]
     ];
-	  
 	
 
   }else{
