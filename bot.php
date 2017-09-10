@@ -203,7 +203,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
             'type' => 'buttons',
             //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
             'title' => 'BMI',
-            'text' => $result ,
+            //'text' => $result ,
             'actions' => [
                 [
                     'type' => 'uri',
