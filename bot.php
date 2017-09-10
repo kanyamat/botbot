@@ -197,9 +197,9 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 
 
  $messages = [
-        'type' => 'template',
-        'altText' => 'trans',
-        'template' => [
+//         'type' => 'template',
+//         'altText' => 'trans',
+//         'template' => [
             'type' => 'text',
             //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
 //             'title' => 'BMI',
@@ -211,7 +211,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 //                     'uri' => 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra
 //                 ]
 //             ]
-        ]
+//         ]
     ];
 	  
 	
