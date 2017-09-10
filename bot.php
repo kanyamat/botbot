@@ -194,23 +194,33 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	$x_tra = str_replace("แปล","", $_msg);
 	//$url = $x_tra.'https://botbot1234.herokuapp.com/GoogleTrans.php';
 	
+	require_once "GoogleTranslate.php";
+	$word = $_REQUEST['word'];
+	$GT = NEW GoogleTranslate();
+	$response = $GT->translate('en','th',$word);
+	//echo "<pre>";
+	//echo $word."   =   ".$response;  
+
  $messages = [
-        'type' => 'template',
-        'altText' => 'BMI chart',
-        'template' => [
-            'type' => 'buttons',
-            //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
-            'title' => 'BMI',
-            'text' => $result ,
-            'actions' => [
-                [
-                    'type' => 'uri',
-                    'label' => 'chart',
-                    'uri' => 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra
-                ]
-            ]
-        ]
+        'type' => 'text',
+        //'altText' => 'Translate',
+//         'template' => [
+//             'type' => 'buttons',
+//             //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
+//             'title' => 'BMI',
+             'text' => $word
+// //             'actions' => [
+// //                 [
+// //                     'type' => 'uri',
+// //                     'label' => 'chart',
+// //                     'uri' => 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra
+// //                 ]
+// //             ]
+//         ]
     ];
+	  
+	  
+	
 
   }else{
 	   $replyToken = $event['replyToken'];
