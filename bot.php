@@ -167,9 +167,9 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     $events = json_decode($json, true);
-//     $title= $events['items'][0]['title'];
-//     $link = $events['items'][0]['link'];
-//     $items = $events['items'];
+     $title= $events['items'][0]['title'];
+     $link = $events['items'][0]['link'];
+     $items = $events['items'];
    
 
 	  
