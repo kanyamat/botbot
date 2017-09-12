@@ -167,8 +167,8 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     $events = json_decode($json, true);
-//      $title= $events['items'][0]['title'];
-//      $link = $events['items'][0]['link'];
+      $title= $events['items'][0]['title'];
+      $link = $events['items'][0]['link'];
      //$items = $events['items'];
    
 // foreach ($array as $item) {
@@ -176,15 +176,20 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 //   $array[] = $item;
 // }
 	  
-	  
-$me = array();
+// 	         $array = array( 1, 2, 3, 4, 5);
+         
+//          foreach( $array as $value ) {
+//             if( $value == 3 )continue;
+//             echo "Value is $value <br />";
+//          }  
+// $me = array();
 
 // for ($i = 1; $i <5; $i++) { 
 //   $me[] = $i;
 // }
 	  
-       for ($i = 0 ; $i<5 ; $i++){
-            $me[] = [[
+//        for ($i = 0 ; $i<5 ; $i++){
+            $me = array([[
                                 'title' => $events['items'][$i]['title'],
                                 'text' => 'description',
                                 'actions' => [
@@ -199,9 +204,11 @@ $me = array();
                                         'uri' => $events['items'][$i]['link']
                                     ]
                                 ]
-                             ]];
+                             ]]);
   
-          }  
+//           } 
+	    foreach( $array as $value ) {
+		      if( $value == 3 )continue;
                $messages = [
                     'type' => 'template',
                     'altText' => 'this is a carousel template',
@@ -210,7 +217,7 @@ $me = array();
                         'columns' =>$me
                     ]
                 ];	  
-	  
+	    }
 } else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
 //********คำวณBMI********//
