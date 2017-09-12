@@ -169,12 +169,12 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
     $events = json_decode($json, true);
      $title= $events['items'][0]['title'];
      $link = $events['items'][0]['link'];
-     $items = $events['items'];
+     //$items = $events['items'];
    
 
 	  
        for ($i = 0 ; $i<5 ; $i++){
-            $me[$i] = [[[
+            $me[$i] = array([[
                                 'title' => $events['items'][$i]['title'],
                                 'text' => 'description',
                                 'actions' => [
@@ -189,7 +189,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                                         'uri' => $events['items'][$i]['link']
                                     ]
                                 ]
-                             ]]];
+                             ]]);
   
           }  
                $messages = [
