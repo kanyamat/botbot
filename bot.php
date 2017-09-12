@@ -189,7 +189,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 // }
 	  
 //        for ($i = 0 ; $i<5 ; $i++){
-            $me = array(
+            $me = array([[
                                 'title' => $events['items'][$i]['title'],
                                 'text' => 'description',
                                 'actions' => [
@@ -204,7 +204,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                                         'uri' => $events['items'][$i]['link']
                                     ]
                                 ]
-                             );
+                             ]]);
   
 //           } 
 	    foreach( $array as $value ) {
@@ -214,7 +214,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                     'altText' => 'this is a carousel template',
                     'template' => [
                         'type' => 'carousel',
-                        'columns' =>$me
+                        'columns' =>$value
                     ]
                 ];	  
 	    }
