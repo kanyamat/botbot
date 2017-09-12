@@ -264,7 +264,7 @@ $me = array();
 	  
    } else if (strpos($_msg, 'tran') !== false) {
 	$replyToken = $event['replyToken'];
-	$a = strtolower($_msg)
+	
 	$x_tra = str_replace("tran","", $_msg);
 	  
 	require_once 'GoogleTranslate.php';
