@@ -262,10 +262,10 @@ $me = array();
 // 		]
 // 	    ];
 	  
-   } else if (strpos($_msg, 'tran') !== false) {
+   } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
 	
-	$x_tra = str_replace("tran","", $_msg);
+	$x_tra = str_replace("แปล","", $_msg);
 	  
 	require_once 'GoogleTranslate.php';
 	$word = $_REQUEST['word'].$x_tra;
