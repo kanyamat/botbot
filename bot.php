@@ -174,7 +174,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 
 	  
        for ($i = 0 ; $i<5 ; $i++){
-            $me[$i] = [[
+            $me[$i] = [
                                 'title' => $events['items'][$i]['title'],
                                 'text' => 'description',
                                 'actions' => [
@@ -189,7 +189,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                                         'uri' => $events['items'][$i]['link']
                                     ]
                                 ]
-                             ]];
+                             ];
   
           }  
                $messages = [
@@ -230,31 +230,31 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
         ]
     ];
 	  
+//    } else if (strpos($_msg, 'แปล') !== false) {
+// 	$replyToken = $event['replyToken'];
+// 	$x_tra = str_replace("แปล","", $_msg);
+// 	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	  
+// 	  $messages = [
+// 		'type' => 'template',
+// 		'altText' => 'template',
+// 		'template' => [
+// 		    'type' => 'buttons',
+// 		    'title' =>  "Google Translate",
+// 		    'text' =>   "แปลคำว่า".$x_tra,
+// 		    'actions' => [
+// 			[
+// 			    'type' => 'uri',
+// 			    'label' => 'ไปยังลิงค์',
+// 			    'uri' => $result
+// 			]
+
+// 		    ]
+// 		]
+// 	    ];
+	  
    } else if (strpos($_msg, 'แปล') !== false) {
 	$replyToken = $event['replyToken'];
 	$x_tra = str_replace("แปล","", $_msg);
-	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	  
-	  $messages = [
-		'type' => 'template',
-		'altText' => 'template',
-		'template' => [
-		    'type' => 'buttons',
-		    'title' =>  "Google Translate",
-		    'text' =>   "แปลคำว่า".$x_tra,
-		    'actions' => [
-			[
-			    'type' => 'uri',
-			    'label' => 'ไปยังลิงค์',
-			    'uri' => $result
-			]
-
-		    ]
-		]
-	    ];
-	  
-   } else if (strpos($_msg, 'tran') !== false) {
-	$replyToken = $event['replyToken'];
-	$x_tra = str_replace("tran","", $_msg);
 	  
 	require_once 'GoogleTranslate.php';
 	$word = $_REQUEST['word'].$x_tra;
