@@ -115,51 +115,94 @@ if (!is_null($events['events'])) {
         ]
     ];
 
-   }else if (strpos($_msg, 'ต้องการ') !== false) {
+//    }else if (strpos($_msg, 'ต้องการ') !== false) {
+//     $replyToken = $event['replyToken'];
+//     $x_tra = str_replace("ต้องการ","", $_msg);
+//     //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+// $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+//     $json= file_get_contents($url);
+//     $events = json_decode($json, true);
+//    	for ($i = 0 ; $i < 5 ; $i++){ 
+// 		$title= $events['items'][$i]['title'];
+// 		$link = $events['items'][$i]['link'];
+				
+//     $messages = [ 
+
+// 	  'type'=> 'template',
+// 	  'altText'=> 'this is a carousel template',
+// 	  'template'=> [
+// 	      'type'=> 'carousel',
+// 	      'columns'=> [ 
+	
+// 			[
+
+// 		  //count($events['item']
+// 		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
+// 		    'title' =>  $x_tra,
+// 		    'text' =>   $title,
+// 		    'actions'=> [
+
+// 			[
+// 			    'type'=> 'postback',
+// 			    'label'=> 'OK',
+// 			    'data'=> 'action=buy&itemid=111'
+// 			],
+// 			[
+// 			    'type'=> 'uri',
+// 			    'label'=> 'ไปยังลิงค์',
+// 			    'uri'=> $link
+// 			]
+		
+// 		    ]
+// 		]
+// 		    ]
+// 		  ]
+// 		];
+// }
+
+	  
+} elseif (strpos($_msg, 'ต้องการ') !== false) {
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("ต้องการ","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;   
+
     //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     $events = json_decode($json, true);
-   	for ($i = 0 ; $i < 5 ; $i++){ 
-		$title= $events['items'][$i]['title'];
-		$link = $events['items'][$i]['link'];
-				
-    $messages = [ 
+    $title= $events['items'][0]['title'];
+    $link = $events['items'][0]['link'];
+    $items = $events['items'];
+   
 
-	  'type'=> 'template',
-	  'altText'=> 'this is a carousel template',
-	  'template'=> [
-	      'type'=> 'carousel',
-	      'columns'=> [ 
-	
-			[
-
-		  //count($events['item']
-		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
-		    'title' =>  $x_tra,
-		    'text' =>   $title,
-		    'actions'=> [
-
-			[
-			    'type'=> 'postback',
-			    'label'=> 'OK',
-			    'data'=> 'action=buy&itemid=111'
-			],
-			[
-			    'type'=> 'uri',
-			    'label'=> 'ไปยังลิงค์',
-			    'uri'=> $link
-			]
-		
-		    ]
-		]
-		    ]
-		  ]
-		];
-}
-
+	  
+       for ($i = 0 ; $i<5 ; $i++){
+            $me[$i] = [[
+                                'title' => $events['items'][$i]['title'],
+                                'text' => 'description',
+                                'actions' => [
+                                    [
+                                        'type' => 'postback',
+                                        'label' => 'buy',
+                                        'data' => 'value'
+                                    ],
+                                    [
+                                        'type' => 'uri',
+                                        'label' => 'add to catrt',
+                                        'uri' => $events['items'][$i]['link']
+                                    ]
+                                ]
+                             ]];
+  
+          }  
+               $messages = [
+                    'type' => 'template',
+                    'altText' => 'this is a carousel template',
+                    'template' => [
+                        'type' => 'carousel',
+                        'columns' =>$me
+                    ]
+                ];	  
+	  
 } else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
 //********คำวณBMI********//
