@@ -188,7 +188,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 //   $me[] = $i;
 // }
 	  
-//        for ($i = 0 ; $i<5 ; $i++){
+        for ($i = 0 ; $i<5 ; $i++){
             $me = array([[
                                 'title' => $events['items'][$i]['title'],
                                 'text' => 'description',
@@ -206,15 +206,14 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                                 ]
                              ]]);
   
-//           } 
-	    foreach( $array as $value ) {
-		      if( $value == 3 )continue;
+           } 
+	   
                $messages = [
                     'type' => 'template',
                     'altText' => 'this is a carousel template',
                     'template' => [
                         'type' => 'carousel',
-                        'columns' =>$value
+                        'columns' =>$me
                     ]
                 ];	  
 	    }
