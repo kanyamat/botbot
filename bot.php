@@ -161,58 +161,58 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 }
 
 	  
-} elseif (strpos($_msg, 'ต้องการ') !== false) {
-    $replyToken = $event['replyToken'];
-    $x_tra = str_replace("ต้องการ","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-      $title= $events['items'][0]['title'];
-      $link = $events['items'][0]['link'];
-     //$items = $events['items'];
+// } elseif (strpos($_msg, 'ต้องการ') !== false) {
+//     $replyToken = $event['replyToken'];
+//     $x_tra = str_replace("ต้องการ","", $_msg);
+//     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+//     $json= file_get_contents($url);
+//     $events = json_decode($json, true);
+//       $title= $events['items'][0]['title'];
+//       $link = $events['items'][0]['link'];
+//      //$items = $events['items'];
    
-// foreach ($array as $item) {
-//   echo "$item\n";
-//   $array[] = $item;
-// }
+// // foreach ($array as $item) {
+// //   echo "$item\n";
+// //   $array[] = $item;
+// // }
 	  
 
          
  
-// $me = array();
+// // $me = array();
 
-// for ($i = 1; $i <5; $i++) { 
-//   $me[] = $i;
-// }
+// // for ($i = 1; $i <5; $i++) { 
+// //   $me[] = $i;
+// // }
 	  
-        for ($i = 0 ; $i<5 ; $i++){
-            $me = array([[
-                                'title' => $events['items'][$i]['title'],
-                                'text' => 'description',
-                                'actions' => [
-                                    [
-                                        'type' => 'postback',
-                                        'label' => 'buy',
-                                        'data' => 'value'
-                                    ],
-                                    [
-                                        'type' => 'uri',
-                                        'label' => 'add to catrt',
-                                        'uri' => $events['items'][$i]['link']
-                                    ]
-                                ]
-                             ]]);
+//         for ($i = 0 ; $i<5 ; $i++){
+//             $me = array([[
+//                                 'title' => $events['items'][$i]['title'],
+//                                 'text' => 'description',
+//                                 'actions' => [
+//                                     [
+//                                         'type' => 'postback',
+//                                         'label' => 'buy',
+//                                         'data' => 'value'
+//                                     ],
+//                                     [
+//                                         'type' => 'uri',
+//                                         'label' => 'add to catrt',
+//                                         'uri' => $events['items'][$i]['link']
+//                                     ]
+//                                 ]
+//                              ]]);
   
-           } 
+//            } 
 	   
-               $messages = [
-                    'type' => 'template',
-                    'altText' => 'this is a carousel template',
-                    'template' => [
-                        'type' => 'carousel',
-                        'columns' =>$me
-                    ]
-                ];	  
+//                $messages = [
+//                     'type' => 'template',
+//                     'altText' => 'this is a carousel template',
+//                     'template' => [
+//                         'type' => 'carousel',
+//                         'columns' =>$me
+//                     ]
+//                 ];	  
 	   
 } else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
