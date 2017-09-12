@@ -123,8 +123,8 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
     $json= file_get_contents($url);
     $events = json_decode($json, true);
    	for ($i = 0 ; $i < 5 ; $i++){ 
-		$title= $events['items'][$i]['title'];
-		$link = $events['items'][$i]['link'];
+		$title[$i] = $events['items'][$i]['title'];
+		$link[$i] = $events['items'][$i]['link'];
 				
     $messages[$i] = [ 
 
