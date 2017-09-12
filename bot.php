@@ -171,7 +171,7 @@ if (!is_null($events['events'])) {
     $events = json_decode($json, true);
 //     $title= $events['items'][0]['title'];
 //     $link = $events['items'][0]['link'];
-    $items = $events['items'];
+//     $items = $events['items'];
    
 
 	  
