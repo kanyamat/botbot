@@ -176,12 +176,9 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 //   $array[] = $item;
 // }
 	  
-// 	         $array = array( 1, 2, 3, 4, 5);
+
          
-//          foreach( $array as $value ) {
-//             if( $value == 3 )continue;
-//             echo "Value is $value <br />";
-//          }  
+ 
 // $me = array();
 
 // for ($i = 1; $i <5; $i++) { 
@@ -216,7 +213,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
                         'columns' =>$me
                     ]
                 ];	  
-	    }
+	   
 } else if (strpos($_msg, 'คำนวณ') !== false) {
  $replyToken = $event['replyToken'];
 //********คำวณBMI********//
