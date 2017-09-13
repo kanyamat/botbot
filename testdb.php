@@ -5,8 +5,8 @@ $dbconn = pg_connect($conn_string);
 
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+}else
+
 
 $sql = "CREATE TABLE MyGuests (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -16,6 +16,7 @@ email VARCHAR(50),
 reg_date TIMESTAMP
 )";
 
+echo "Connected successfully";
 
 ?>
 
