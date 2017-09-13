@@ -8,13 +8,6 @@ if (!$dbconn) {
 }else
 
 
-$sql = """CREATE TABLE "Bot" (
-historyID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-userID VARCHAR(100) NOT NULL,
-date_history DATE NOT NULL,
-width INT(3),
-height INT(3)
-)""";
 
 echo " successfully";
 
