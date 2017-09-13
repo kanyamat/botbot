@@ -1,14 +1,6 @@
 <?php
-$servername = "ec2-23-21-220-167.compute-1.amazonaws.com";
-$username = "kywyvkvocykcqg";
-$password = "76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.comp port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47";
+$dbconn4 = pg_connect($conn_string);
 ?>
+
