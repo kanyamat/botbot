@@ -16,7 +16,7 @@ email VARCHAR(50),
 reg_date TIMESTAMP
 )";
 
-echo "Connected successfully";
+echo " successfully";
 
 ?>
 
