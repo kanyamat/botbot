@@ -16,6 +16,8 @@ width DOUBLE,
 height DOUBLE,
 PRIMARY KEY(History_ID)
 )";
+    
+    $dbconn2 = pg_connect($sql);
 }
 ?>
 
