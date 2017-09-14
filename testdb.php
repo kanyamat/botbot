@@ -8,7 +8,7 @@ if (!$dbconn) {
 }
 
 
-$sql="CREATE TABLE bot.users (
+$sql="CREATE TABLE bot.test (
 id varchar(5),
 name varchar(20), 
 middle varchar(20),
