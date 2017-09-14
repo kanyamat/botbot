@@ -8,19 +8,25 @@ if (!$dbconn) {
 }
 
 
-$sql="CREATE TABLE bot.test (
-id varchar(5),
-name varchar(20), 
-middle varchar(20),
-last varchar(20),
-address varchar(50),
-expir date,
-pass varchar(20),
-PRIMARY KEY(id)
-)";
-    
-//     $dbconn2 = pg_connect($sql);
-    
+// $sql="CREATE TABLE bot.test (
+// id varchar(5),
+// name varchar(20), 
+// middle varchar(20),
+// last varchar(20),
+// address varchar(50),
+// expir date,
+// pass varchar(20),
+// PRIMARY KEY(id)
+// )";
+
+$sql="CREATE TABLE History (
+HistoryID varchar(100),
+userID varchar(100), 
+date_history DATE,
+weight DOUBLE,
+height DOUBLE,
+PRIMARY KEY(HistoryID)
+)";   
  //echo " successfully";
   pg_exec($dbconn, $sql) or die(pg_errormessage()); 
  
