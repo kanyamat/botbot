@@ -5,7 +5,7 @@ $dbconn = pg_connect($conn_string);
 
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
-}else{
+}
 
 
 $sql = "CREATE TABLE History(History_ID INT NOT NULL AUTO_INCREMENT,
@@ -19,7 +19,7 @@ PRIMARY KEY(History_ID)
     $dbconn2 = pg_connect($sql);
     
  echo " successfully";
-}
+
 ?>
 
 
