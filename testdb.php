@@ -23,8 +23,8 @@ $sql="CREATE TABLE History (
 HistoryID varchar(100),
 userID varchar(100), 
 date_history DATE,
-weight DOUBLE,
-height DOUBLE,
+weight INT,
+height INT,
 PRIMARY KEY(HistoryID)
 )";   
  //echo " successfully";
