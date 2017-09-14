@@ -25,7 +25,7 @@ userID varchar(100),
 date_history DATE,
 weight INT,
 height INT,
-PRIMARY KEY(HistoryID)
+PRIMARY KEY(HistoryID),
 FOREIGN KEY (userID) REFERENCES Users(userID)
 )";   
 
