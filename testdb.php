@@ -8,13 +8,13 @@ if (!$dbconn) {
 }
 
 
-$sql = "CREATE TABLE bot.History("History_ID INT NOT NULL AUTO_INCREMENT,"
+$sql = "CREATE TABLE bot.History("History_ID INT NOT NULL AUTO_INCREMENT",
 "userID VARCHAR (100)",
 "date_history DATE",
 "width DOUBLE",
 "height DOUBLE",
 "PRIMARY KEY(History_ID)"
-)";
+");
     
 //     $dbconn2 = pg_connect($sql);
     
