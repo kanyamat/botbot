@@ -8,21 +8,25 @@ if (!$dbconn) {
 }
 
 
-// $sql = "CREATE TABLE bot.History(History_ID INT NOT NULL AUTO_INCREMENT,
-// userID VARCHAR (100),
-// date_history DATE,
-// width DOUBLE,
-// height DOUBLE,
-// PRIMARY KEY(History_ID)
-// )";
+$sql = "CREATE TABLE bot.History("History_ID INT NOT NULL AUTO_INCREMENT,"
+"userID VARCHAR (100)",
+"date_history DATE",
+"width DOUBLE",
+"height DOUBLE",
+"PRIMARY KEY(History_ID)"
+)";
     
 //     $dbconn2 = pg_connect($sql);
     
- echo " successfully";
-
-$ResId = pg_exec("CREATE TABLE bot.MyGuests", $dbconn);
+ //echo " successfully";
+  $retval = mysql_query( $sql, $dbconn );
+ if(! $retval ) {
+            die('Could not create table: ' . mysql_error());
+         }
+         echo "Table created successfully\n";
+         mysql_close($conn);
+//$ResId = pg_exec("CREATE TABLE bot.MyGuests", $dbconn);
 ?>
-
 
 
 
