@@ -17,7 +17,7 @@ address varchar(50),
 expir date,
 pass varchar(20),
 PRIMARY KEY(id)
-)"
+)";
     
 //     $dbconn2 = pg_connect($sql);
     
