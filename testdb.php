@@ -26,7 +26,7 @@ date_history DATE,
 weight INT,
 height INT,
 PRIMARY KEY(HistoryID),
-FOREIGN KEY (userID) REFERENCES Users(userID)
+FOREIGN KEY(userID) REFERENCES Users(userID)
 )";   
 
 // $sql="CREATE TABLE Users (
@@ -35,9 +35,8 @@ FOREIGN KEY (userID) REFERENCES Users(userID)
 // date_of_birth DATE,
 // PRIMARY KEY(userID)
 // )";
-  pg_exec($dbconn, $sql) or die(pg_errormessage()); 
+pg_exec($dbconn, $sql) or die(pg_errormessage()); 
  
-
 
 ?>
 
