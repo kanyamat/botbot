@@ -36,7 +36,6 @@ FOREIGN KEY(userID) REFERENCES Users(userID)
 // PRIMARY KEY(userID)
 // )";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 
- 
 
 ?>
 
