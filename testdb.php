@@ -19,20 +19,28 @@ if (!$dbconn) {
 // PRIMARY KEY(id)
 // )";
 
-$sql="CREATE TABLE History (
-HistoryID varchar(100),
-userID varchar(100), 
-date_history DATE,
-weight INT,
-height INT,
-PRIMARY KEY(HistoryID)
-)";   
- //echo " successfully";
+// $sql="CREATE TABLE History (
+// HistoryID varchar(100),
+// userID varchar(100), 
+// date_history DATE,
+// weight INT,
+// height INT,
+// PRIMARY KEY(HistoryID)
+// FOREIGN KEY (userID) REFERENCES Persons(Users)
+// )";   
+
+$sql="CREATE TABLE Users (
+userID varchar(100),
+name varchar(50),
+date_of_birth DATE,
+PRIMARY KEY(userID)
+)";
   pg_exec($dbconn, $sql) or die(pg_errormessage()); 
  
 
 
 ?>
+
 
 
 
