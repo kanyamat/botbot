@@ -19,7 +19,7 @@ $sql = "CREATE TABLE bot.History("History_ID INT NOT NULL AUTO_INCREMENT",
 //     $dbconn2 = pg_connect($sql);
     
  //echo " successfully";
-  $retval = mysql_query( $sql, $dbconn );
+  $retval = pg_exec( $sql, $dbconn );
  if(! $retval ) {
             die('Could not create table: ' . mysql_error());
          }
