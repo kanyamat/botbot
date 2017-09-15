@@ -282,7 +282,12 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	    ];	
 	  
   } else if (strpos($_msg, 'บันทึก') !== false) {
- $replyToken = $event['replyToken'];
+      $replyToken = $event['replyToken'];
+      $text = "กรุณาบันทึกข้อความ";
+      $messages = [
+        'type' => 'text',
+        'text' => $text
+      ]; 
 //********คำวณBMI********//
     $x_tra =  str_replace("บันทึก","", $_msg);
     $pieces = explode(":", $x_tra);
