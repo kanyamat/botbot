@@ -4,7 +4,7 @@ $access_token = 'bgcpus2P5KwACpu1UXUqwCaTmNG98QXQXzx7kNvG2mnr4LKQpDo3DHKRwK/ShDB
 // Get POST body content
 $content = file_get_contents('php://input');
 $data = json_decode($json,true);
-$user = $events['events'][0]['source']['userId'];
+
 // Parse JSON
 $events = json_decode($content, true);
 $_msg = $events['events'][0]['message']['text'];
@@ -284,52 +284,18 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	  
   } else if (strpos($_msg, 'บันทึก') !== false) {
       $replyToken = $event['replyToken'];
-//       $text = "กรุณาบันทึกข้อความ";
-//       $messages = [
-//         'type' => 'text',
-//         'text' => $text
-//       ];
     $x_tra =  str_replace("บันทึก","", $_msg);
     $pieces = explode(":", $x_tra);
     $height = str_replace("","",$pieces[0]);
     $weight  = str_replace("","",$pieces[1]);
 //********ใส่ 5 ค่าลง array********//	
-//$user_id= $events['events'][0]['source']['userId'];
+$user_id= $events['events'][0]['source']['userId'];
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 
 	  
-$sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user,NOW(),$weight,$height)";
+$sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user_id,NOW(),$weight,$height)";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
-//********บันทึกข้อความ********//	  
-// 	[
-// 	  "type"=> "template",
-// 	  "altText"=> "confirm ",
-// 	  "template"=> [
-// 	      "type"=> "confirm",
-// 	      "text"=> "Are you sure?",
-// 	      "actions"=> [
-// 		  [
-// 		    "type"=> "message",
-// 		    "label"=> "Yes",
-// 		    "text"=> "yes"
-// 		  ],
-// 		  [
-// 		    "type"=> "message",
-// 		    "label"=> "No",
-// 		    "text"=> "no"
-// 		  ]
-// 	      ]
-// 	  ]
-// 	]; 
-	  
-	  
-//********คำวณBMI********//
-    $x_tra =  str_replace("บันทึก","", $_msg);
-    $pieces = explode(":", $x_tra);
-    $height = str_replace("","",$pieces[0]);
-    $width  = str_replace("","",$pieces[1]);
-
 
   }else{
 	   $replyToken = $event['replyToken'];
