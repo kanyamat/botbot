@@ -38,11 +38,11 @@ if (!is_null($events['events'])) {
   
   }else if (strpos($_msg, 'สวัสดี') !== false) {
       $replyToken = $event['replyToken'];
-      //$text = "สวัสดีจ้า";
-	  $user = $events['events'][0]['source']['userId'];
+      $text = "สวัสดีจ้า";
+	 
       $messages = [
         'type' => 'text',
-        'text' => $user
+        'text' => $text
       ]; 
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
@@ -284,7 +284,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 	    ];	
 	  
   } else if (strpos($_msg, 'บันทึก') !== false) {
-      $replyToken = $event['replyToken'];
+    $replyToken = $event['replyToken'];
     $x_tra =  str_replace("บันทึก","", $_msg);
     $pieces = explode(":", $x_tra);
     $height = str_replace("","",$pieces[0]);
@@ -298,7 +298,7 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
 
 	  
-$sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user,NOW(),$weight,$height)";
+$sql="INSERT INTO History(userID,date_history,weight,height) VALUES($user,NOW(),$weight,$height)";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
 
   }else{
