@@ -295,7 +295,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 
-$user = $events['events'][0]['source']['userId'];	  
+$user = $events['events'][2]['source']['userId'];	  
 $sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user,NOW(),$weight,$height)";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
 
