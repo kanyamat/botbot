@@ -19,14 +19,23 @@ if (!$dbconn) {
 // PRIMARY KEY(id)
 // )";
 
+// $sql="CREATE TABLE History (
+// HistoryID varchar(100),
+// userID varchar(100), 
+// date_history DATE,
+// weight INT,
+// height INT,
+// PRIMARY KEY(HistoryID),
+// FOREIGN KEY(userID) REFERENCES Users(userID)
+// )";   
+
 $sql="CREATE TABLE History (
-HistoryID varchar(100),
+HistoryID  SERIAL,
 userID varchar(100), 
 date_history DATE,
-weight INT,
-height INT,
-PRIMARY KEY(HistoryID),
-FOREIGN KEY(userID) REFERENCES Users(userID)
+weight varchar(3),
+height varchar(3),
+PRIMARY KEY(HistoryID)
 )";   
 
 // $sql="CREATE TABLE Users (
