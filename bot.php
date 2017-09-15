@@ -280,6 +280,15 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 		'type' => 'text',
 		'text' => $word." = ".$response
 	    ];	
+	  
+  } else if (strpos($_msg, 'บันทึก') !== false) {
+ $replyToken = $event['replyToken'];
+//********คำวณBMI********//
+    $x_tra =  str_replace("บันทึก","", $_msg);
+    $pieces = explode(":", $x_tra);
+    $height = str_replace("","",$pieces[0]);
+    $width  = str_replace("","",$pieces[1]);
+
 
   }else{
 	   $replyToken = $event['replyToken'];
