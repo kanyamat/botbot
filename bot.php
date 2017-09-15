@@ -294,7 +294,7 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
 
 	  
-$sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user_id,NOW(),$weight,$height)";
+$sql="INSERT INTO History(date_history,weight,height) VALUES(NOW(),$weight,$height)";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
 
   }else{
