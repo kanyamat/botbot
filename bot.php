@@ -38,10 +38,11 @@ if (!is_null($events['events'])) {
   
   }else if (strpos($_msg, 'สวัสดี') !== false) {
       $replyToken = $event['replyToken'];
-      $text = "สวัสดีจ้า";
+      //$text = "สวัสดีจ้า";
+	  $user = $events['events'][0]['source']['userId'];
       $messages = [
         'type' => 'text',
-        'text' => $text
+        'text' => $user
       ]; 
 
   }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
@@ -288,6 +289,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
     $pieces = explode(":", $x_tra);
     $height = str_replace("","",$pieces[0]);
     $weight  = str_replace("","",$pieces[1]);
+    $user = $events['events'][0]['source']['userId'];
 //********ใส่ 5 ค่าลง array********//
 
 
@@ -295,7 +297,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 
-$user = $events['events'][2]['source']['userId'];	  
+	  
 $sql="INSERT INTO History(userid,date_history,weight,height) VALUES($user,NOW(),$weight,$height)";
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
 
