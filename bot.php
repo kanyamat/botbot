@@ -309,7 +309,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 		  ]
 	      ]
 	  ]
-	] 
+	]; 
 	  
 	  
 //********คำวณBMI********//
