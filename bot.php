@@ -287,7 +287,31 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
       $messages = [
         'type' => 'text',
         'text' => $text
-      ]; 
+      ];
+	  
+//********บันทึกข้อความ********//	  
+	[
+	  "type": "template",
+	  "altText": "confirm ",
+	  "template": [
+	      "type": "confirm",
+	      "text": "Are you sure?",
+	      "actions": [
+		  [
+		    "type": "message",
+		    "label": "Yes",
+		    "text": "yes"
+		  ],
+		  [
+		    "type": "message",
+		    "label": "No",
+		    "text": "no"
+		  ]
+	      ]
+	  ]
+	] 
+	  
+	  
 //********คำวณBMI********//
     $x_tra =  str_replace("บันทึก","", $_msg);
     $pieces = explode(":", $x_tra);
