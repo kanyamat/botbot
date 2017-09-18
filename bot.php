@@ -298,9 +298,16 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
 
 	  
-$sql="INSERT INTO History(userid,date_history,weight,height) VALUES('Ub840b452d253f3db490dd59507ab78d1',NOW(),$weight,$height)";
-pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
-
+//$sql="INSERT INTO History(userid,date_history,weight,height) VALUES('Ub840b452d253f3db490dd59507ab78d1',NOW(),$weight,$height)";
+//pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
+$sql = "SELECT weight FROM history";
+$result = $conn->query($sql);
+	    $messages = [
+	     'type' => 'text',
+	     'text' => $result
+	     ]; 	  
+	  
+	  
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
