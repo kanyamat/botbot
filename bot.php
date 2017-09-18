@@ -305,7 +305,7 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
   }else if (strpos($_msg, 'test') !== false) {
       $replyToken = $event['replyToken'];
       $sql = "SELECT weight FROM history";
-	$result = $conn->query($sql);
+	$result = pg_exec($sql) or die(pg_errormessage());
 	    $messages = [
 	     'type' => 'text',
 	     'text' => $result
