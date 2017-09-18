@@ -308,7 +308,7 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	$dbconn = pg_pconnect($conn_string);
         $sql = "SELECT height FROM history WHERE height='155'";
 	$result = pg_exec($dbconn, $sql); 
-	  $a = $result
+	  $a = $result;
 	    $messages = [
 	     'type' => 'text',
 	     'text' => $a
