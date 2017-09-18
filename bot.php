@@ -307,8 +307,10 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 	$dbconn = pg_pconnect($conn_string);
         $sql =  "SELECT * FROM history";
-	$a = pg_exec($dbconn, $sql); 
+	//$a = pg_exec($dbconn, $sql); 
 	//$a = pg_query($dbconn, $sql); 
+	$a = pg_execute($dbconn, $sql); 
+	  
 	
 	//pg_close($con); 
 	  
@@ -318,13 +320,7 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	     'text' => $a
 	     ]; 
 	 
-	  
-	  
-	  
-	  $query = "SELECT height FROM history"; 
-
-$rs = pg_query($con, $query) or die("Cannot execute query: $query\n");
-
+	 
 
 	  
 	  
