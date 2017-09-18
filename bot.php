@@ -307,10 +307,10 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 	$dbconn = pg_pconnect($conn_string);
         $sql = "SELECT weight FROM public.history";
-	$result = pg_exec($dbconn, $sql) or die(pg_errormessage()); 
+	$result => pg_exec($dbconn, $sql); 
 	    $messages = [
 	     'type' => 'text',
-	     'text' => $sql
+	     'text' => $result
 	     ]; 
 	 
 	  
