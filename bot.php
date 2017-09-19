@@ -305,22 +305,21 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
   }else if (strpos($_msg, 'test') !== false) {
         $replyToken = $event['replyToken'];
 	$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
-	$dbconn = pg_pconnect($conn_string);
-        $sql =  "SELECT * FROM history";
+	$dbconn = pg_connect($conn_string);
+        //$sql =  "SELECT * FROM history";
 	//$a = pg_exec($dbconn, $sql); 
 	//$a = pg_query($dbconn, $sql); 
-	$a = pg_execute($dbconn, $sql); 
-	  
+	//$a = pg_execute($dbconn, $sql); 
+
+	$ResId = pg_exec ("select weight from history", $dbconn);
 	
-	//pg_close($con); 
-	  
-	  
+
 	    $messages = [
 	     'type' => 'text',
-	     'text' => $a
+	     'text' => $ResId
 	     ]; 
 	 
-	 
+	pg_close ($dbconn); 
 
 	  
 	  
