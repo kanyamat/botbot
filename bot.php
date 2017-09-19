@@ -325,26 +325,11 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
   $dbconn = pg_pconnect($conn_string);
   $sql =  "SELECT height FROM history WHERE weight='49' ";
   $a = pg_exec($dbconn, $sql);  
-    $messages = [ 
-  'type'=> 'template',
-  'altText'=> 'this is a confirm template',
-  'template'=> [
-      'type'=> 'confirm',
-      'text'=> 'Are you sure?',
-      'actions'=> [
-          [
-            'type'=> 'message',
-            'label'=> $a,
-            'text'=> 'yes'
-          ],
-          [
-            'type'=> 'message',
-            'label'=> $a,
-            'text'=> 'no'
-          ]
-      ]
-  ]
-];  
+      $messages = [
+        'type' => 'text',
+        'text' => $a
+      ]; 
+
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
