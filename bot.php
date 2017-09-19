@@ -304,10 +304,10 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	  
   }else if (strpos($_msg, 'test') !== false) {
   $replyToken = $event['replyToken'];
-	$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
-	$dbconn = pg_pconnect($conn_string);
-  $sql =  "SELECT height FROM history WHERE weight='49' ";
-	$a = pg_exec($dbconn, $sql); 
+	// $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
+	// $dbconn = pg_pconnect($conn_string);
+ //  $sql =  "SELECT height FROM history WHERE weight='49' ";
+	// $a = pg_exec($dbconn, $sql); 
 	//$a = pg_query($dbconn, $sql); 
 	//$a = pg_execute($dbconn, $sql); 
 
@@ -339,9 +339,6 @@ $messages = [
   ]
 
 ];
-
-
-
 
   }else{
 	   $replyToken = $event['replyToken'];
