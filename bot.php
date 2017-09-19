@@ -321,7 +321,10 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "test"){
    $replyToken = $event['replyToken']; 
 //    $event = strtolower('text');
-    
+   $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
+  $dbconn = pg_pconnect($conn_string);
+  $sql =  "SELECT height FROM history WHERE weight='49' ";
+  $a = pg_exec($dbconn, $sql);  
     $messages = [ 
   'type'=> 'template',
   'altText'=> 'this is a confirm template',
@@ -331,12 +334,12 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
       'actions'=> [
           [
             'type'=> 'message',
-            'label'=> 'Yes',
+            'label'=> $a,
             'text'=> 'yes'
           ],
           [
             'type'=> 'message',
-            'label'=> 'No',
+            'label'=> $a,
             'text'=> 'no'
           ]
       ]
