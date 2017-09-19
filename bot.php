@@ -318,7 +318,7 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	    //  'text' => $a
 	    //  ]; 
 	 
-[
+$messages = [
   'type'=> 'template',
   'altText'=> 'this is a confirm template',
   'template'=> [
@@ -337,8 +337,8 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
           ]
       ]
   ]
-]
 
+];
 
 
 
