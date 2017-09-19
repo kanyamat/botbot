@@ -323,12 +323,28 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 //    $event = strtolower('text');
    $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
   $dbconn = pg_pconnect($conn_string);
-  $sql =  "SELECT height FROM history WHERE weight='49' ";
-  $a = pg_execute($dbconn, $sql);  
-      $messages = [
-        'type' => 'text',
-        'text' => $a
-      ]; 
+  // $sql =  "SELECT height FROM history WHERE weight='49' ";
+  // $a = pg_execute($dbconn, $sql);  
+  //     $messages = [
+  //       'type' => 'text',
+  //       'text' => $a
+  //     ]; 
+
+
+$query = 'select weight from history ';
+    $result = pg_query($query);
+    while ($row = pg_fetch_row($result)) {
+     $e =  "น้ำหนัก $row[0] ";
+    }
+   
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => $e 
+                      ];  
+
+
+
 
   }else{
 	   $replyToken = $event['replyToken'];
