@@ -302,8 +302,8 @@ $sql="INSERT INTO History(userid,date_history,weight,height) VALUES('Ub840b452d2
 pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
 	  
 	  
-  }else if (strpos($_msg, 'test') !== false) {
-  $replyToken = $event['replyToken'];
+  // }else if (strpos($_msg, 'test') !== false) {
+  // $replyToken = $event['replyToken'];
 	// $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 	// $dbconn = pg_pconnect($conn_string);
  //  $sql =  "SELECT height FROM history WHERE weight='49' ";
@@ -318,15 +318,19 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	    //  'text' => $a
 	    //  ]; 
 	 
-$messages = [
+ }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "test"){
+   $replyToken = $event['replyToken']; 
+//    $event = strtolower('text');
+    
+    $messages = [ 
   'type'=> 'template',
   'altText'=> 'this is a confirm template',
   'template'=> [
       'type'=> 'confirm',
       'text'=> 'Are you sure?',
-     ' actions'=> [
+      'actions'=> [
           [
-           ' type'=> 'message',
+            'type'=> 'message',
             'label'=> 'Yes',
             'text'=> 'yes'
           ],
@@ -337,9 +341,7 @@ $messages = [
           ]
       ]
   ]
-
-];
-
+];  
   }else{
 	   $replyToken = $event['replyToken'];
 	   $text = "พิมพ์ใหม่อีกทีนะ";
