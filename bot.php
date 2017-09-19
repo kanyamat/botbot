@@ -312,14 +312,13 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	//$a = pg_execute($dbconn, $sql); 
 
 	$ResId = pg_exec ("SELECT weight FROM history", $dbconn);
-	
 
 	    $messages = [
 	     'type' => 'text',
 	     'text' => $ResId
 	     ]; 
 	 
-	pg_close ($dbconn); 
+	
 
 	  
 	  
