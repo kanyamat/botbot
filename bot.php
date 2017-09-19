@@ -318,11 +318,6 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	     'text' => $ResId
 	     ]; 
 	 
-	
-
-	  
-	  
-	  
 	  
   }else{
 	   $replyToken = $event['replyToken'];
