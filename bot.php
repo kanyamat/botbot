@@ -318,32 +318,26 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 	    //  'text' => $a
 	    //  ]; 
 	 
-	   $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  $x_tra,
-            'text' =>   $a,
-            'actions' => [
-                [
-                    'type' => 'postback',
-                    'label' => 'good',
-                    'data' => 'value'
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $link
-                ],
-    [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
-                    'uri' => $link2
-                ]
-            ]
-        ]
-    ];
+[
+  'type'=> 'template',
+  'altText'=> 'this is a confirm template',
+  'template'=> [
+      'type'=> 'confirm',
+      'text'=> 'Are you sure?',
+     ' actions'=> [
+          [
+           ' type'=> 'message',
+            'label'=> 'Yes',
+            'text'=> 'yes'
+          ],
+          [
+            'type'=> 'message',
+            'label'=> 'No',
+            'text'=> 'no'
+          ]
+      ]
+  ]
+]
 
 
 
