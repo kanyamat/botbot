@@ -1,4 +1,11 @@
 <?php
+
+// ######## DATABASE ########
+$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
+$dbconn = pg_pconnect($conn_string);
+
+########
+
 $access_token = 'bgcpus2P5KwACpu1UXUqwCaTmNG98QXQXzx7kNvG2mnr4LKQpDo3DHKRwK/ShDBN8DuOTST/+8C5VhzObnEEF2OTSY3vEtnrOrL65QwHqjOfpm9R8HjlInUDtPf4J6hvMqsq7LZ4DdU4rW1MrvVI5AdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -294,8 +301,7 @@ $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_g
 #$result = serialize($user);
 
 
-$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
-$dbconn = pg_pconnect($conn_string);
+
 
 	  
 $sql="INSERT INTO History(userid,date_history,weight,height) VALUES('Ub840b452d253f3db490dd59507ab78d1',NOW(),$weight,$height)";
@@ -321,15 +327,6 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "test"){
    $replyToken = $event['replyToken']; 
 //    $event = strtolower('text');
-   $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
-  $dbconn = pg_pconnect($conn_string);
-  // $sql =  "SELECT height FROM history WHERE weight='49' ";
-  // $a = pg_execute($dbconn, $sql);  
-  //     $messages = [
-  //       'type' => 'text',
-  //       'text' => $a
-  //     ]; 
-
 
 $query = 'select weight from history ';
     $result = pg_query($query);
