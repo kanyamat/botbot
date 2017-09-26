@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
                     'type' => 'message',
                     'label' => 'ไม่สนใจ',
                     'text' => 'ไม่สนใจ'
-                ],
+                ]
             ]
         ]
     ];
