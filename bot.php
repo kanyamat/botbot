@@ -9,6 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $curr_years = date("Y");
 $curr_y = ($curr_years+ 543);
+
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
