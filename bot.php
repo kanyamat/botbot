@@ -1,334 +1,239 @@
 <?php
-
-// ######## DATABASE ########
+//database
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
-
-########
-
-$access_token = 'bgcpus2P5KwACpu1UXUqwCaTmNG98QXQXzx7kNvG2mnr4LKQpDo3DHKRwK/ShDBN8DuOTST/+8C5VhzObnEEF2OTSY3vEtnrOrL65QwHqjOfpm9R8HjlInUDtPf4J6hvMqsq7LZ4DdU4rW1MrvVI5AdB04t89/1O/w1cDnyilFU=';
-
-// Get POST body content
+//
+$access_token = '4gfsGaqIXbNfJ88oUSmGLr69EtzUII/sUdbnhRKz/vk0+ZbLS180P1mNoyO3YkhK63HtsANA6HSxJnUz2C0OHaq0wNUK6eZP/zMUGlpc0+NP5i1gnM+a6bfRho35/ugJplJg4T+Kb6x9PbYXbstz4wdB04t89/1O/w1cDnyilFU=';
 $content = file_get_contents('php://input');
-$data = json_decode($json,true);
-
 // Parse JSON
 $events = json_decode($content, true);
+$curr_years = date("Y");
+$curr_y = ($curr_years+ 543);
 $_msg = $events['events'][0]['message']['text'];
+$user = $events['events'][0]['source']['userId'];
+$user_id = pg_escape_string($user);
+$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+                  echo $seqcode =  $row[0];
+                  echo $sender = $row[2]; 
+                } 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
  // Loop through each event
  foreach ($events['events'] as $event) {
   // Reply only when message sent is in 'text' format
-  if ($event['type'] == 'message' && $event['message']['type'] == 'sticker'){
-//       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
-   
-   $stick1 = $events['events'][0]['message']['packageId'];
-   $stick2 = $events['events'][0]['message']['stickerId'];
-   // Get replyToken
-   $replyToken = $event['replyToken'];
-   // Build message to reply back
-   $messages = [
-    'type'=> 'sticker',
-    'packageId'=> $stick1,
-    'stickerId'=> $stick2
-   ];
-   
-//    // Get replyToken
-//    $replyToken = $event['replyToken'];
-//    // Build message to reply back
-//    $messages = [
-//     'type'=> 'sticker',
-//     'packageId'=> '2',
-//     'stickerId'=> '24'
-//    ];
-  
-  }else if (strpos($_msg, 'สวัสดี') !== false) {
+  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
-      $text = "สวัสดีจ้า";
-	 
-      $messages = [
-        'type' => 'text',
-        'text' => $text
-      ]; 
-
-  }else if ($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
-    $replyToken = $event['replyToken'];   
-   $messages = [
-     'type' => 'text',
-     'text' => "เราชื่อ botbot นะ"
-     ];
-   
-  }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ok"){
-   $replyToken = $event['replyToken']; 
-//    $event = strtolower('text');
-    
-    $messages = [ 
-  'type'=> 'template',
-  'altText'=> 'this is a confirm template',
-  'template'=> [
-      'type'=> 'confirm',
-      'text'=> 'Are you sure?',
-      'actions'=> [
-          [
-            'type'=> 'message',
-            'label'=> 'Yes',
-            'text'=> 'yes'
-          ],
-          [
-            'type'=> 'message',
-            'label'=> 'No',
-            'text'=> 'no'
-          ]
-      ]
-  ]
-];  
-   
-  }else if (strpos($_msg, 'หา') !== false) {
-    $replyToken = $event['replyToken'];
-    $x_tra = str_replace("หา","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyCdlIPgeHwexorxeKsVvjrW1fwh4SOjOjI&q='.$x_tra;
-    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAzNh-0u0rojtkaQvmBlCg44f7oGIvFWdw&q='.$x_tra;
-    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAACKRpkX5IcqTtZeQAY0i4MGM8Gx2_Xrk&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-    $title= $events['items'][0]['title'];
-    $link = $events['items'][0]['link'];
-    $link2 = $events['items'][1]['link'];
-
-   $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  $x_tra,
-            'text' =>   $title,
-            'actions' => [
-                [
-                    'type' => 'postback',
-                    'label' => 'good',
-                    'data' => 'value'
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $link
-                ],
-		[
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
-                    'uri' => $link2
-                ]
-            ]
-        ]
-    ];
-
-   }else if (strpos($_msg, 'อยากได้') !== false) {
-    $replyToken = $event['replyToken'];
-    $x_tra = str_replace("อยากได้","", $_msg);
-    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-$url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-   	for ($i = 0 ; $i < 5 ; $i++){ 
-		$title[$i] = $events['items'][$i]['title'];
-		$link[$i] = $events['items'][$i]['link'];
-				
-    $messages[$i] = [ 
-
-	  'type'=> 'template',
-	  'altText'=> 'this is a carousel template',
-	  'template'=> [
-	      'type'=> 'carousel',
-	      'columns'=> [ 
-	
-			[
-
-		  //count($events['item']
-		    //'thumbnailImageUrl'=> 'https://botbot1234.herokuapp.com/images/luffy.jpg',
-		    'title' =>  $x_tra,
-		    'text' =>   $title,
-		    'actions'=> [
-
-			[
-			    'type'=> 'postback',
-			    'label'=> 'OK',
-			    'data'=> 'action=buy&itemid=111'
-			],
-			[
-			    'type'=> 'uri',
-			    'label'=> 'ไปยังลิงค์',
-			    'uri'=> $link
-			]
-		
-		    ]
-		]
-		    ]
-		  ]
-		];
-}
-
-	  
-// } elseif (strpos($_msg, 'ต้องการ') !== false) {
-//     $replyToken = $event['replyToken'];
-//     $x_tra = str_replace("ต้องการ","", $_msg);
-//     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-//     $json= file_get_contents($url);
-//     $events = json_decode($json, true);
-//       $title= $events['items'][0]['title'];
-//       $link = $events['items'][0]['link'];
-//      //$items = $events['items'];
-   
-// // foreach ($array as $item) {
-// //   echo "$item\n";
-// //   $array[] = $item;
-// // }
-	  
-
-         
- 
-// // $me = array();
-
-// // for ($i = 1; $i <5; $i++) { 
-// //   $me[] = $i;
-// // }
-	  
-//         for ($i = 0 ; $i<5 ; $i++){
-//             $me = array([[
-//                                 'title' => $events['items'][$i]['title'],
-//                                 'text' => 'description',
-//                                 'actions' => [
-//                                     [
-//                                         'type' => 'postback',
-//                                         'label' => 'buy',
-//                                         'data' => 'value'
-//                                     ],
-//                                     [
-//                                         'type' => 'uri',
-//                                         'label' => 'add to catrt',
-//                                         'uri' => $events['items'][$i]['link']
-//                                     ]
-//                                 ]
-//                              ]]);
-  
-//            } 
-	   
-//                $messages = [
-//                     'type' => 'template',
-//                     'altText' => 'this is a carousel template',
-//                     'template' => [
-//                         'type' => 'carousel',
-//                         'columns' =>$me
-//                     ]
-//                 ];	  
-	   
-} else if (strpos($_msg, 'คำนวณ') !== false) {
- $replyToken = $event['replyToken'];
-//********คำวณBMI********//
-    $x_tra =  str_replace("คำนวณ","", $_msg);
-    $pieces = explode(":", $x_tra);
-    $height = str_replace("","",$pieces[0]);
-    $width  = str_replace("","",$pieces[1]);
-//********ใส่ 5 ค่าลง array********//	 
-   
-    $result = $width/($height*$height);
-   
+      $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยไหม";
+      // $messages = [
+      //   'type' => 'text',
+      //   'text' => $text
+      // ];
         $messages = [
-        'type' => 'template',
-        'altText' => 'BMI chart',
+       'type' => 'template',
+        'altText' => 'this is a confirm template',
         'template' => [
-            'type' => 'buttons',
-            //'thumbnailImageUrl'=> 'https://bottest14.herokuapp.com/n_susu.png',
-            'title' => 'BMI',
-            'text' => $result ,
+            'type' => 'confirm',
+            'text' => $text ,
             'actions' => [
                 [
-                    'type' => 'uri',
-                    'label' => 'chart',
-                    'uri' => 'https://botbot1234.herokuapp.com/chart.php?data1='.$result.'&data2='.$width 
-                ]
+                    'type' => 'message',
+                    'label' => 'สนใจ',
+                    'text' => 'สนใจ'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่สนใจ',
+                    'text' => 'ไม่สนใจ'
+                ],
             ]
         ]
     ];
-	  
-//    } else if (strpos($_msg, 'แปล') !== false) {
-// 	$replyToken = $event['replyToken'];
-// 	$x_tra = str_replace("แปล","", $_msg);
-// 	$result = 'https://botbot1234.herokuapp.com/trans.php?word='.$x_tra;	  
-// 	  $messages = [
-// 		'type' => 'template',
-// 		'altText' => 'template',
-// 		'template' => [
-// 		    'type' => 'buttons',
-// 		    'title' =>  "Google Translate",
-// 		    'text' =>   "แปลคำว่า".$x_tra,
-// 		    'actions' => [
-// 			[
-// 			    'type' => 'uri',
-// 			    'label' => 'ไปยังลิงค์',
-// 			    'uri' => $result
-// 			]
-
-// 		    ]
-// 		]
-// 	    ];
-	  
-   } else if (strpos($_msg, 'แปล') !== false) {
-	$replyToken = $event['replyToken'];
-	
-	$x_tra = str_replace("แปล","", $_msg);
-	  
-	require_once 'GoogleTranslate.php';
-	$word = $_REQUEST['word'].$x_tra;
-	$GT = NEW GoogleTranslate();
-	$response = $GT->translate('th','en',$word);  
-	
-
-	  $messages = [
-		'type' => 'text',
-		'text' => $word." = ".$response
-	    ];	
-	  
-  } else if (strpos($_msg, 'บันทึก') !== false) {
+   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+  }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
+                 //$text = 'ขอเริ่มสอบถามข้อมูลเบื้องต้นก่อนนะคะ ขอทราบพ.ศ.เกิดของคุณเพื่อคำนวณอายุ (ตัวอย่างการพิมพ์ เกิด2530)';
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
+                $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0004','0',NOW(),NOW())") or die(pg_errormessage());
+   
+  }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) ขอบคุณค่ะ'
+                      ];          
+  
+           
+    
+  }elseif (is_numeric($_msg) !== false && $seqcode == "0006"  && strlen($_msg) == 4 && $_msg < $curr_y && $_msg > "2500" ) {
+  
+    $birth_years = $_msg;
+    $curr_years = date("Y"); 
+    $age = ($curr_years+ 543)- $birth_years;
+    $age_mes = 'ปีนี้คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
     $replyToken = $event['replyToken'];
-    $x_tra =  str_replace("บันทึก","", $_msg);
-    $pieces = explode(":", $x_tra);
-    $height = str_replace("","",$pieces[0]);
-    $weight  = str_replace("","",$pieces[1]);
-    $user = $events['events'][0]['source']['userId'];
-//********ใส่ 5 ค่าลง array********//
-#$result = serialize($user);
-
-
-
-
-	  
-$sql="INSERT INTO History(userid,date_history,weight,height) VALUES('Ub840b452d253f3db490dd59507ab78d1',NOW(),$weight,$height)";
-pg_exec($dbconn, $sql) or die(pg_errormessage()); 	
-	  
-	  
-  // }else if (strpos($_msg, 'test') !== false) {
-  // $replyToken = $event['replyToken'];
-	// $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
-	// $dbconn = pg_pconnect($conn_string);
- //  $sql =  "SELECT height FROM history WHERE weight='49' ";
-	// $a = pg_exec($dbconn, $sql); 
-	//$a = pg_query($dbconn, $sql); 
-	//$a = pg_execute($dbconn, $sql); 
-
-	//$ResId = pg_exec("SELECT weight FROM history", $dbconn);
-
-	    // $messages = [
-	    //  'type' => 'text',
-	    //  'text' => $a
-	    //  ]; 
-	 
- }else if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "test"){
-   $replyToken = $event['replyToken']; 
-//    $event = strtolower('text');
-
-$query = 'select weight from history ';
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' => $age_mes ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];     
+      $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008', $age ,'0009','0',NOW(),NOW())") or die(pg_errormessage());
+           
+       // $q = pg_exec($dbconn, "INSERT INTO user_data(user_id,user_age,user_weight,user_height,preg_week )VALUES('{$user_id}',$age,'0','0','0') ") or die(pg_errormessage());      
+  }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
+      $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+            
+                  echo $answer = $row[3];  
+                } 
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'ขอทราบครั้งสุดท้ายที่คุณมีประจำเดือนเพื่อคำนวณอายุครรภ์ค่ะ(ตัวอย่างการพิมพ์ วันที่17 01 คือวันที่17 มกราคม)'
+                      ];
+           $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0009','0',NOW(),NOW())") or die(pg_errormessage());
+           $q1 = pg_exec($dbconn, "INSERT INTO user_data(user_id,user_age,user_weight,user_height,preg_week )VALUES('{$user_id}',$answer,'0','0','0') ") or die(pg_errormessage());   
+  }elseif ($event['message']['text'] == "ไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์ใหม่'
+                      ];  
+  }elseif (strlen($_msg) == 5 && $seqcode == "0008") {
+    // $birth_years =  str_replace("วันที่","", $_msg);
+    $pieces = explode(" ", $_msg);
+    $date = str_replace("","",$pieces[0]);
+    $month  = str_replace("","",$pieces[1]);
+    $date_today = date("d"); 
+    $month_today = date("m");  
+        if ($date>$date_today){
+            $date_pre = $date-$date_today ;
+        }else{
+            $date_pre = $date_today-$date;
+        }
+    $month_pre = ($month_today-$month)*4 ;
+  
+    $age_pre = 'คุณมีอายุครรภ์'. $month_pre.'สัปดาห์'. $date_pre .'วัน' ;
+    $replyToken = $event['replyToken'];
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' =>  $age_pre ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุครรภ์ถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];   
+    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008',   $month_pre,'0009','0',NOW(),NOW())") or die(pg_errormessage());
+    
+  }elseif ($event['message']['text'] == "อายุครรภ์ถูกต้อง" ) {
+    $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+            
+                  echo $answer = $row[3];  
+                } 
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'ขออนุญาตถามน้ำหนักปกติก่อนตั้งครรภ์ของคุณค่ะ (กรุณาตอบเป็นตัวเลขในหน่วยกิโลกรัม เช่น น้ำหนัก50)'
+                      ];
+    $q1 = pg_exec($dbconn, "UPDATE user_data SET preg_week = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
+  }elseif ($event['message']['text'] == "น้ำหนักถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'ขออนุญาตถามส่วนสูงปัจจุบันของคุณค่ะ (กรุณาตอบเป็นตัวเลขในหน่วยเซ็นติเมตร ส่วนสูง160)'
+                      ];  
+  }elseif (strpos($_msg, 'น้ำหนัก') !== false)  {
+                 $weight =  str_replace("น้ำหนัก","", $_msg);
+                 $weight_mes = 'ก่อนตั้งครรภ์ คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+                                'template' => [
+                                    'type' => 'confirm',
+                                    'text' =>  $weight_mes ,
+                                    'actions' => [
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ถูกต้อง',
+                                            'text' => 'น้ำหนักถูกต้อง'
+                                        ],
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ไม่ถูกต้อง',
+                                            'text' => 'ไม่ถูกต้อง'
+                                        ],
+                                    ]
+                                 ]     
+                             ];   
+  }elseif ($event['message']['text'] == "ส่วนสูงถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'สรุป'
+                      ];  
+  }elseif (strpos($_msg, 'ส่วนสูง') !== false) {
+                 $height =  str_replace("ส่วนสูง","", $_msg);
+                 $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+                                'template' => [
+                                    'type' => 'confirm',
+                                    'text' =>  $height_mes ,
+                                    'actions' => [
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ถูกต้อง',
+                                            'text' => 'ส่วนสูงถูกต้อง'
+                                        ],
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ไม่ถูกต้อง',
+                                            'text' => 'ไม่ถูกต้อง'
+                                        ],
+                                    ]
+                                 ]     
+                             ];   
+  }elseif ($event['message']['text'] == "ทดสอบ" ) {
+    $query = 'select weight from history ';
     $result = pg_query($query);
     while ($row = pg_fetch_row($result)) {
      $e =  "น้ำหนัก $row[0] ";
@@ -339,40 +244,36 @@ $query = 'select weight from history ';
                         'type' => 'text',
                         'text' => $e 
                       ];  
-
-
-
-
   }else{
-	   $replyToken = $event['replyToken'];
-	   $text = "พิมพ์ใหม่อีกทีนะ";
-	    $messages = [
-	     'type' => 'text',
-	     'text' => $text
-	     ]; 
-  } 
+    $replyToken = $event['replyToken'];
+    $text = "ฉันไม่เข้าใจค่ะ";
+    $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
+    
+  }
+  
+ }
 }
-}
-
-
-// echo "OK"; 
- // Make a POST Request to Messaging API to reply to sender
-   $url = 'https://api.line.me/v2/bot/message/reply';
-   $data = [
-    'replyToken' => $replyToken,
-    'messages' => [$messages],
-   ];
-   $post = json_encode($data);
-   $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-   $ch = curl_init($url);
-   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-   $result = curl_exec($ch);
-   curl_close($ch);
-   echo $result . "\r\n";
-
-
-      
+  // Make a POST Request to Messaging API to reply to sender
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+ 
+echo "OK"; 
+?>
